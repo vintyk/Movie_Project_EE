@@ -16,12 +16,12 @@ import java.io.IOException;
  */
 @WebServlet("/test02")
 public class test02 extends HttpServlet{
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ArtistDto artistDto = new ArtistDto("Madonna", false);
-        req.setAttribute("artist", artistDto);
-        RequestDispatcher requestDispatcher
-                =getServletContext().getRequestDispatcher("/WEB-INF/jsp/artistDto.jsp");
-        requestDispatcher.forward(req, resp);
-    }
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        ArtistDto artistDto = new ArtistDto("Madonna", false);
+//        req.setAttribute("artist", artistDto);
+//        RequestDispatcher requestDispatcher
+//                =getServletContext().getRequestDispatcher("/WEB-INF/jsp/artistDto.jsp");
+//        requestDispatcher.forward(req, resp);
+//    }
 }

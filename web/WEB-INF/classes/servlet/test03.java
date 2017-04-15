@@ -16,13 +16,13 @@ import java.io.IOException;
  */
 @WebServlet("/test03")
 public class test03 extends HttpServlet {
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ArtistDto artistDto = new ArtistDto("Madonna");
-        String artist = req.getParameter("name");
-        System.out.println(artist);
-        RequestDispatcher requestDispatcher
-                =getServletContext().getRequestDispatcher("/WEB-INF/jsp/save-artist.jsp");
-        requestDispatcher.forward(req, resp);
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        ArtistDto artistDto = new ArtistDto("Madonna");
+//        String artist = req.getParameter("name");
+//        System.out.println(artist);
+//        RequestDispatcher requestDispatcher
+//                =getServletContext().getRequestDispatcher("/WEB-INF/jsp/save-artist.jsp");
+//        requestDispatcher.forward(req, resp);
+//    }
 }

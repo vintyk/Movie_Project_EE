@@ -11,6 +11,19 @@
     <title>Title</title>
 </head>
 <body>
+<h1>Регистрация пользователя</h1>
+<form action="AddUser" method="post">
 
+    Email: <input type="text" name="email"><br>
+    Пароль: <input type="password" name="password" size="10"><br>
+    Имя: <input type="text" name="user" size="10"><br>
+    Фамилия: <input type="text" name="user" size="10"><br>
+    Отчество: <input type="text" name="user" size="10"><br>
+    <table>
+        <th>
+                <input type="submit" name="save" value="Зарегистрировать">
+        </th>
+    </table>
+</form>
 </body>
 </html>
