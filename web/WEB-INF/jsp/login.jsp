@@ -27,6 +27,10 @@
         </small>
     </table>
 </form>
+<select>
+    <option>Русский</option>
+    <option>English</option>
+</select>
 <br>
 </body>
 </html>
