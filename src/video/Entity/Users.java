@@ -13,6 +13,14 @@ public class Users {
     private int privilegeUser;
 
     public Users(String nameUser, String familyUser,
+                 String sNameUser, String passwordUser, String eMailUser) {
+        this.nameUser = nameUser;
+        this.familyUser = familyUser;
+        this.sNameUser = sNameUser;
+        this.eMailUser = eMailUser;
+        this.passwordUser = passwordUser;
+    }
+    public Users(String nameUser, String familyUser,
                  String sNameUser, String passwordUser, int privilegeUser, String eMailUser) {
         this.nameUser = nameUser;
         this.familyUser = familyUser;

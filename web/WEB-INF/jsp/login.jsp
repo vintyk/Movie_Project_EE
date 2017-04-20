@@ -9,11 +9,11 @@
 </head>
 <body>
 <!-- Не работает вставка картинки -->
-<!-- <img  src="${pageContext.servletContext.contextPath}/login.png" border="0"  alt="login" > -->
+ <!-- <img  src="${pageContext.servletContext.contextPath}/login.png" border="0"  alt="login" > -->
 <br>
 <div class="col-md-4 bs-col"> <br>
 <h1>Вход в систему</h1>
-<form class="form-inline">
+<form class="form-inline" method="post">
     <input type="text" class="input-small" placeholder="Email">
     <input type="password" class="input-small" placeholder="Password"><br>
     <label class="checkbox">
@@ -33,7 +33,7 @@
            <input type="submit" name="registration" value="Зарегистрироваться">
 </form>
 -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> Зарегистрироваться </button>
+<button class="btn btn-primary btn-lg" data-toggle="modal" > Зарегистрироваться </button>
 <select>
     <option>Русский</option>
     <option>English</option>

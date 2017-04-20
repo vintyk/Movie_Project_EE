@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
     <title>Admin Tool</title>
@@ -11,7 +11,7 @@
 <div class="container-fluid bs-cont">
 <div class="col-md-6 bs-col"> <br>
     <h1>Регистрация пользователя. Администратор.</h1>
-    <form class="form-horizontal" method="post">
+    <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/save">
         <div class="control-group">
             <label class="control-label" for="inputEmail">Введите логин</label>
             <div class="controls">

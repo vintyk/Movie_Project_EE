@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by Vinty on 14.04.2017.
  */
-@WebServlet("/test03")
+//@WebServlet("/test03")
 public class test03 extends HttpServlet {
 //    @Override
 //    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

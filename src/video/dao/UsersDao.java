@@ -27,6 +27,28 @@ public class UsersDao {
     public Optional<Users> addUser(Users users) {
         try (Connection connection = ConnectionManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(
+                    "INSERT INTO users (name, family, s_name, password, e_mail) " +
+                            " VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                preparedStatement.setString(1, users.getNameUser());
+                preparedStatement.setString(2, users.getFamilyUser());
+                preparedStatement.setString(3, users.getsNameUser());
+                preparedStatement.setString(4, users.getPasswordUser());
+                preparedStatement.setString(5, users.geteMailUser());
+                preparedStatement.executeUpdate();
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if(generatedKeys.next()){
+                    users.setId(generatedKeys.getLong(1));
+                    return Optional.of(users);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
+    public Optional<Users> addUserAdmin(Users users) {
+        try (Connection connection = ConnectionManager.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO users (name, family, s_name, password, privilege_id, e_mail) " +
                             " VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
                 preparedStatement.setString(1, users.getNameUser());

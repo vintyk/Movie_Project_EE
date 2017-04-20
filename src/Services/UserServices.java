@@ -11,9 +11,9 @@ public class UserServices {
                     "Жукова",
                     "Леонидовна",
                     "qwerty3",
-                    2,
                     "ej@ecp.by"));
     }
+
 //        System.out.println(UsersDao.getInstance().getById(5L));
 
 
