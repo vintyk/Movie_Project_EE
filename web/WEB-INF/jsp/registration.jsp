@@ -51,7 +51,13 @@
             </div>
         </div>
     </form>
-
+    <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/login">
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary btn-lg" > Войти в систему </button>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>

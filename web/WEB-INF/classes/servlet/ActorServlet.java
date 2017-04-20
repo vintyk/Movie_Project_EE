@@ -11,18 +11,18 @@ import java.io.IOException;
 /**
  * Created by Vinty on 14.04.2017.
  */
-@WebServlet("/users")
-public class UserServlet extends HttpServlet {
+@WebServlet("/actors")
+public class ActorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher
-                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/users.jsp");
+                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/actors.jsp");
         requestDispatcher.forward(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher
-                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/users.jsp");
+                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/actors.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

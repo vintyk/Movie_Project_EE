@@ -12,18 +12,17 @@ import java.io.IOException;
  * Created by Vinty on 14.04.2017.
  */
 @WebServlet("/registration")
-public class Registration extends HttpServlet{
+public class Registration extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher
-                =getServletContext().getRequestDispatcher("/WEB-INF/jsp/registration.jsp");
+                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/registration.jsp");
         requestDispatcher.forward(req, resp);
     }
-
-
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher
-                =getServletContext().getRequestDispatcher("/WEB-INF/jsp/registration.jsp");
+                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/registration.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

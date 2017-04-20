@@ -13,31 +13,37 @@
 <br>
 <div class="col-md-4 bs-col"> <br>
 <h1>Вход в систему</h1>
-<form class="form-inline" method="post">
-    <input type="text" class="input-small" placeholder="Email">
-    <input type="password" class="input-small" placeholder="Password"><br>
-    <label class="checkbox">
-        <input type="checkbox"> Запомнить
-    </label>
-    <br>
-    <button type="submit" class="btn">Отправить</button>
-</form>
-<!--
-<form action="Registration" method="post">
-    <label for="user">E-Mail</label>
-    <input type="text" name="user" id="user"><br>
-    <label for="pass">Пароль</label>
-    <input type="password" name="password" id="pass"><br>
+    <form class="form-inline" method="post" action="${pageContext.request.contextPath}/login">
+        <div class="control-group">
+            <label class="control-label" for="inputEmail">Введите логин (E-Mail)</label>
+            <div class="controls">
+                <input type="text" id="inputEmail" name="inputEmail" placeholder="E-mail">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputPassword">Введите ваш пароль</label>
+            <div class="controls">
+                <input type="password" id="inputPassword" name="inputPassword" placeholder="Password">
+            </div>
+        </div>
+        <label class="checkbox">
+            <input type="checkbox"> Запомнить
+        </label>
+        <br>
+        <select>
+            <option>Русский</option>
+            <option>English</option>
+        </select>
+        <br>
+        <br>
+        <button class="btn btn-primary btn-lg" data-toggle="modal" > Войти в систему </button>
+    </form>
+    <form class="form-inline" method="post" action="${pageContext.request.contextPath}/registration">
+        <br>
+        <button class="btn btn-primary btn-lg" data-toggle="modal"> Зарегистрироваться </button>
+    </form>
 
-           <input type="submit" name="login" value="Войти в систему">
-           <input type="submit" name="registration" value="Зарегистрироваться">
-</form>
--->
-<button class="btn btn-primary btn-lg" data-toggle="modal" > Зарегистрироваться </button>
-<select>
-    <option>Русский</option>
-    <option>English</option>
-</select>
+
 </div>
 </body>
 </html>
