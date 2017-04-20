@@ -58,6 +58,14 @@
         </div>
     </form>
     <br>
+    <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/userList">
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary btn-lg" > Таблица в БД </button>
+            </div>
+        </div>
+    </form>
+        <br>
 </div>
 </div>
 </body>

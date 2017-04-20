@@ -20,9 +20,11 @@
 <div class="container-fluid bs-cont">
     <div class="col-md-6 bs-col"> <br>
         <h1>Пользователи</h1>
-        <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/users">
+
+       <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/userModal">
             <button type="submit" class="btn btn-primary btn-lg" > Все пользователи </button>
-        </form>
+       </form>
+
         <br>
     </div>
 </div>

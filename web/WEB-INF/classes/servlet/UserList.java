@@ -19,11 +19,11 @@ import static video.dao.PeopleDao.getPeopleByMovieId;
 /**
  * Created by Vinty on 12.04.2017.
  */
-@WebServlet ("/user")
+@WebServlet ("/userList")
 public class UserList extends HttpServlet {
     private Object List;
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
