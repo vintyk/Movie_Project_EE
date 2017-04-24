@@ -9,7 +9,7 @@
 </head>
 <body>
 <!-- Не работает вставка картинки -->
- <!-- <img  src="${pageContext.servletContext.contextPath}/login.png" border="0"  alt="login" > -->
+ <!-- <img  src="/img/login.png" border="0"  alt="login" > -->
 <br>
 <div class="col-md-4 bs-col"> <br>
 <h1>Вход в систему</h1>
