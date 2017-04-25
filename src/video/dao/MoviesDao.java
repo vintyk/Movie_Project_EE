@@ -11,15 +11,15 @@ import java.util.Optional;
 /**
  * Created by Vinty on 09.04.2017.
  */
-public class MovieDao {
+public class MoviesDao {
     private static final Object LOCK = new Object();
-    private static MovieDao INSTANCE = null;
+    private static MoviesDao INSTANCE = null;
 
-    public static MovieDao getInstance() {
+    public static MoviesDao getInstance() {
         if (INSTANCE == null) {
             synchronized (LOCK) {
                 if (INSTANCE == null) {
-                    INSTANCE = new MovieDao();
+                    INSTANCE = new MoviesDao();
                 }
             }
         }

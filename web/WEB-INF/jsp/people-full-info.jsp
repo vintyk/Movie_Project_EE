@@ -11,7 +11,7 @@
         ${requestScope.people_full.familyPeople}
         ${requestScope.people_full.sNamePeople}
         ${requestScope.people_full.dateOfBirthPeople}
-            ${requestScope.people_full.rolePeople}
+          ${requestScope.people_full.rolePeople}
 
 
 

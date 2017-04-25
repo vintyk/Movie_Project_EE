@@ -29,5 +29,14 @@
     <orderEntry type="library" name="javaConcurrentAnimated" level="project" />
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="jstl-1.2" level="project" />
+    <orderEntry type="library" name="javax.annotation" level="project" />
+    <orderEntry type="library" name="javax.ejb" level="project" />
+    <orderEntry type="library" name="javax.jms" level="project" />
+    <orderEntry type="library" name="javax.persistence" level="project" />
+    <orderEntry type="library" name="javax.resource" level="project" />
+    <orderEntry type="library" name="javax.servlet" level="project" />
+    <orderEntry type="library" name="javax.servlet.jsp" level="project" />
+    <orderEntry type="library" name="javax.transaction" level="project" />
+    <orderEntry type="library" name="tomcat-jdbc" level="project" />
   </component>
 </module>

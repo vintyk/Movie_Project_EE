@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Actors</title>
@@ -17,16 +18,14 @@
     </div>
 </ul>
 <br>
-<div class="container-fluid bs-cont">
-    <div class="col-md-6 bs-col"> <br>
-        <h1>Aктеры</h1>
-        <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/actors">
-            <button type="submit" class="btn btn-primary btn-lg" > Все актеры </button>
-        </form>
-        <br>
 
-<h1>Добавить актера</h1>
-<form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/actors">
+<div class="container-fluid bs-cont">
+    <div class="col-md-4 bs-col"> <br>
+        <h1>Aктеры</h1>
+
+
+    <h1>Добавить актера</h1>
+    <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/actors">
 
     <div class="control-group">
         <label class="control-label" for="inputName">Введите имя актера</label>
@@ -67,9 +66,32 @@
             <button type="submit" class="btn btn-primary btn-lg" > Сохранить актера в базе </button>
         </div>
     </div>
-</form>
+    </form>
 <br>
 <br>
+    </div>
+    <div class="col-md-8 bs-col">
+        <br>
+        <br>
+        <div class="container">
+            <select>
+                <c:forEach items="${requestScope.people}" var="people">
+                    <option><p><a href="${pageContext.request.contextPath}/people-full-info?id=${people.id}">${people.name}  ${people.family}</a></p></option>
+                </c:forEach>
+            </select>
+            <br>
+            <br>
+
+                <button type="submit" class="btn btn-primary btn-lg" > Выбрать актера </button>
+            </form>
+            <br>
+        </div>
+        <br>
+        <div class="jumbotron">
+            <div class="container">
+                <P> Python, <abbr title="сокр. от in my humble opinion; «по моему скромному мнению»" class="initialism">IMHO</abbr>— один из самых лёгких в изучении.</P>
+            </div>
+        </div>
     </div>
 </div>
 </body>

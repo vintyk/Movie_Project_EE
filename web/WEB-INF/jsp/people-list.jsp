@@ -6,10 +6,14 @@
 
 </head>
 <body>
-<div class="container">
+
+    <div class="container">
+    <select>
     <c:forEach items="${requestScope.people}" var="people">
-        <p><a href="${pageContext.request.contextPath}/show-people-details?id=${people.id}">${people.name}  ${people.family}</a></p>
+    <option><p><a href="${pageContext.request.contextPath}/people-full-info?id=${people.id}">${people.name}  ${people.family}</a></p></option>
     </c:forEach>
-</div>
+    </select>
+    </div>
+
 </body>
 </html>

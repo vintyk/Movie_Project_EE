@@ -1,41 +1,21 @@
-package video.Entity;
-import javax.management.relation.Role;
-import java.util.HashSet;
-import java.util.Set;
+package dto;
 
 /**
- * Created by Vinty on 02.04.2017.
+ * Created by Vinty on 24.04.2017.
  */
-public class People {
-    private long id;
+public class ViewPeopleFullInfoDto {
     private String namePeople;
     private String familyPeople;
     private String sNamePeople;
     private String dateOfBirthPeople;
-    private Roles roles;
+    private String rolePeople;
 
-    public People(String namePeople, String familyPeople, String sNamePeople, String dateOfBirthPeople) {
+    public ViewPeopleFullInfoDto(String namePeople, String familyPeople, String sNamePeople, String dateOfBirthPeople, String rolePeople) {
         this.namePeople = namePeople;
         this.familyPeople = familyPeople;
         this.sNamePeople = sNamePeople;
         this.dateOfBirthPeople = dateOfBirthPeople;
-    }
-
-    public People(long id, String namePeople, String familyPeople, String sNamePeople, String dateOfBirthPeople, Roles roles) {
-        this.id = id;
-        this.namePeople = namePeople;
-        this.familyPeople = familyPeople;
-        this.sNamePeople = sNamePeople;
-        this.dateOfBirthPeople = dateOfBirthPeople;
-        this.roles = roles;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+        this.rolePeople = rolePeople;
     }
 
     public String getNamePeople() {
@@ -70,11 +50,11 @@ public class People {
         this.dateOfBirthPeople = dateOfBirthPeople;
     }
 
-    public Roles getRoles() {
-        return roles;
+    public String getRolePeople() {
+        return rolePeople;
     }
 
-    public void setRoles(Roles roles) {
-        this.roles = roles;
+    public void setRolePeople(String rolePeople) {
+        this.rolePeople = rolePeople;
     }
 }

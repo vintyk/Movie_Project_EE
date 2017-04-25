@@ -1,4 +1,6 @@
 package servlet;
+import Services.PeopleServices;
+
 import javax.servlet.HttpConstraintElement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,9 +17,11 @@ import java.io.IOException;
 public class ActorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher
-                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/actors.jsp");
-        requestDispatcher.forward(req, resp);
+        req.setAttribute("people", PeopleServices.getInstance().getAllPeople());
+        getServletContext().getRequestDispatcher("/WEB-INF/jsp/actors.jsp").forward(req, resp);
+        //        RequestDispatcher requestDispatcher
+//                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/actors.jsp");
+//        requestDispatcher.forward(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,4 +29,5 @@ public class ActorServlet extends HttpServlet {
                 = getServletContext().getRequestDispatcher("/WEB-INF/jsp/actors.jsp");
         requestDispatcher.forward(req, resp);
     }
+
 }

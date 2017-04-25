@@ -1,5 +1,6 @@
 package video.dao;
 
+import video.Entity.Privileges;
 import video.Entity.Users;
 import video.connection.ConnectionManager;
 
@@ -77,12 +78,36 @@ public class UsersDao {
                 preparedStatement.setLong(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    return Optional.of(new Users(id,
+                    return Optional.of(new Users(
                             resultSet.getString("name"),
                             resultSet.getString("family"),
                             resultSet.getString("s_name"),
                             resultSet.getString("password"),
                             resultSet.getInt("privilege_id"),
+                            resultSet.getString("e_mail")));
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
+    public Optional<Users> getByIdPriv(long id) {
+        try(Connection connection = ConnectionManager.getConnection()) {
+            try(PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM users WHERE id = ?")) {
+                preparedStatement.setLong(1, id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    int tmp = resultSet.getInt("privilege_id");
+                    Optional<Privileges> privileges = PrivilegesDao.getInstance().getById(tmp);
+                    return Optional.of(new Users(
+                            resultSet.getString("name"),
+                            resultSet.getString("family"),
+                            resultSet.getString("s_name"),
+                            resultSet.getString("password"),
+                            privileges.get().getName(),
                             resultSet.getString("e_mail")));
                 }
             }

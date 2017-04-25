@@ -1,14 +1,17 @@
-package video.Entity;
+package dto;
+
 /**
- * Created by Vinty on 09.04.2017.
+ * Created by Vinty on 24.04.2017.
  */
-public class Genre {
+public class ViewPeopleBasicInfoDto {
     private long id;
     private String name;
+    private String family;
 
-    public Genre(long id, String name) {
+    public ViewPeopleBasicInfoDto (long id, String name, String family){
         this.id = id;
         this.name = name;
+        this.family = family;
     }
 
     public long getId() {
@@ -27,11 +30,11 @@ public class Genre {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Genre{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public String getFamily() {
+        return family;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
     }
 }

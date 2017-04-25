@@ -1,14 +1,22 @@
 package video.Entity;
 
 /**
- * Created by Vinty on 09.04.2017.
+ * Created by User on 21.04.2017.
  */
-public class Countrie {
+public class Privileges {
     private long id;
     private String name;
 
-    public Countrie(long id, String name) {
+    public Privileges(long id, String name) {
         this.id = id;
+        this.name = name;
+    }
+
+    public Privileges(long id) {
+        this.id = id;
+    }
+
+    public Privileges(String name) {
         this.name = name;
     }
 
@@ -30,7 +38,7 @@ public class Countrie {
 
     @Override
     public String toString() {
-        return "Countrie{" +
+        return "Privileges{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

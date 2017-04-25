@@ -3,11 +3,11 @@ package video.Entity;
 /**
  * Created by Vinty on 09.04.2017.
  */
-public class Roles {
+public class Countries {
     private long id;
     private String name;
 
-    public Roles(long id, String name) {
+    public Countries(long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -30,7 +30,7 @@ public class Roles {
 
     @Override
     public String toString() {
-        return "Roles{" +
+        return "Countries{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

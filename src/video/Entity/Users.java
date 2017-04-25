@@ -1,5 +1,7 @@
 package video.Entity;
 
+import javax.management.relation.Role;
+
 /**
  * Created by Vinty on 07.04.2017.
  */
@@ -11,6 +13,39 @@ public class Users {
     private String eMailUser;
     private String passwordUser;
     private int privilegeUser;
+    private Privileges privileges;
+    private String privilegesStr;
+
+    public Users(String nameUser, String familyUser, String sNameUser, String eMailUser, String privilegesStr, String passwordUser) {
+        this.nameUser = nameUser;
+        this.familyUser = familyUser;
+        this.sNameUser = sNameUser;
+        this.eMailUser = eMailUser;
+        this.privilegesStr = privilegesStr;
+        this.passwordUser = passwordUser;
+
+    }
+
+    public Users(long id, String nameUser, String familyUser,
+                 String sNameUser, String eMailUser, String passwordUser, Privileges privileges) {
+        this.id = id;
+        this.nameUser = nameUser;
+        this.familyUser = familyUser;
+        this.sNameUser = sNameUser;
+        this.eMailUser = eMailUser;
+        this.passwordUser = passwordUser;
+        this.privileges = privileges;
+    }
+
+    public Users(String nameUser, String familyUser,
+                 String sNameUser, String eMailUser, String passwordUser, Privileges privileges) {
+        this.nameUser = nameUser;
+        this.familyUser = familyUser;
+        this.sNameUser = sNameUser;
+        this.eMailUser = eMailUser;
+        this.passwordUser = passwordUser;
+        this.privileges = privileges;
+    }
 
     public Users(String nameUser, String familyUser,
                  String sNameUser, String passwordUser, String eMailUser) {
@@ -105,6 +140,7 @@ public class Users {
                 ", eMailUser='" + eMailUser + '\'' +
                 ", passwordUser='" + passwordUser + '\'' +
                 ", privilegeUser=" + privilegeUser +
+                ", privileges=" + privileges +
                 '}';
     }
 }

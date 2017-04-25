@@ -1,7 +1,6 @@
 package servlet;
-import video.Entity.Movies;
 import video.connection.ConnectionManager;
-import video.dao.UsersDao;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import static video.dao.MovieDao.getMoviesByYear;
-import static video.dao.PeopleDao.getPeopleByMovieId;
+
 /**
  * Created by Vinty on 12.04.2017.
  */
