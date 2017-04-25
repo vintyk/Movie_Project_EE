@@ -21,44 +21,41 @@
 
 <div class="container-fluid bs-cont">
     <div class="col-md-4 bs-col"> <br>
-        <h1>Aктеры</h1>
-
-
-    <h1>Добавить актера</h1>
+    <h1>Aктеры</h1>
+    <h3>Добавить актера</h3>
     <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/actors">
-
-    <div class="control-group">
-        <label class="control-label" for="inputName">Введите имя актера</label>
-        <div class="controls">
-            <input type="text" id="inputName" placeholder="Имя">
+        <div class="control-group">
+            <label class="control-label" for="inputName">Введите имя актера</label>
+            <div class="controls">
+                <input type="text" id="inputName" name="namePeople" placeholder="Имя">
+            </div>
         </div>
-    </div>
     <div class="control-group">
         <label class="control-label" for="inputFamily">Введите фамилию актера</label>
         <div class="controls">
-            <input type="text" id="inputFamily" placeholder="Фамилия">
+            <input type="text" id="inputFamily" name="familyPeople" placeholder="Фамилия">
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="inputSname">Отчество (если есть)</label>
         <div class="controls">
-            <input type="text" id="inputSname" placeholder="Отчество">
+            <input type="text" id="inputSname" name="sNamePeople" placeholder="Отчество">
         </div>
         <br>
     </div>
     <div class="control-group">
         <label class="control-label" for="inputDate">Дата рождения</label>
         <div class="controls">
-            <input type="text" id="inputDate" placeholder="01.01.1950">
+            <input type="text" id="inputDate" name="dateOfBirthPeople" placeholder="1960.01.01">
         </div>
         <br>
     </div>
     <label class="radio">
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+        <input type="radio" name="rolesId" id="optionsRadios1" value="1" checked>
         Актер.
     </label>
     <label class="radio">
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+        <input type="radio" name="rolesId" id="optionsRadios2" value="2">
         Режисер.
     </label>
     <div class="control-group">
