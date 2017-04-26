@@ -58,6 +58,8 @@
         <input type="radio" name="rolesId" id="optionsRadios2" value="2">
         Режисер.
     </label>
+        <br>
+
     <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn btn-primary btn-lg" > Сохранить актера в базе </button>
@@ -66,10 +68,13 @@
         <br>
         <br>
 
+
+    </form>
+        <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/people-full-info2">
         <div class="container">
             <select name="peopleListDropdown">
                 <c:forEach items="${requestScope.people}" var="people">
-                    <option value="/people-full-info?id=${people.id}">${people.name} ${people.family}</option>
+                    <option value="${people.id}">${people.name} ${people.family}</option>
                 </c:forEach>
             </select>
             <br>
@@ -77,7 +82,15 @@
             <button type="submit" class="btn btn-primary btn-lg" > Выбрать актера </button>
             <br>
         </div>
-    </form>
+            <P> Имя: ${requestScope.people_full.namePeople}
+            <p> Фамилия: ${requestScope.people_full.familyPeople}</p>
+            <p> Отчество: ${requestScope.people_full.sNamePeople} </p>
+            <p> Год рождения: ${requestScope.people_full.dateOfBirthPeople}</P>
+            <p> ${requestScope.people_full.rolePeople} </p>
+        </form>
+
+
+
 <br>
 <br>
     </div>
