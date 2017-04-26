@@ -18,14 +18,12 @@ import java.io.IOException;
 public class ActorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         showPage(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PeopleServices.getInstance().createNewPeople(getRequestForCrtPeople(req));
-      //  req.setAttribute("people_full", PeopleServices.getInstance().getFullInfo(Integer.valueOf(req.getParameter("id"))));
         showPage(req, resp);
     }
 

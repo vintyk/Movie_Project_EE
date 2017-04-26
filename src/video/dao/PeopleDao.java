@@ -47,7 +47,7 @@ public class PeopleDao {
             try (PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO people (name, family, s_name, date_bday, id_role) " +
                             "VALUES (?, ?, ?, ?, ?)")) {
-                preparedStatement.setString(1, people.getsNamePeople());
+                preparedStatement.setString(1, people.getNamePeople());
                 preparedStatement.setString(2, people.getFamilyPeople());
                 preparedStatement.setString(3, people.getsNamePeople());
                 preparedStatement.setString(4, people.getDateOfBirthPeople());
