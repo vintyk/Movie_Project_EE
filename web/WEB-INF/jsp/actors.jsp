@@ -25,7 +25,10 @@
 
 <div class="container-fluid bs-cont">
     <div class="col-md-4 bs-col"><br>
-        <h1 align="center">Aктеры</h1>
+        <br>
+        <div class="alert alert-success">
+            <h1 align="center">Aктеры</h1>
+        </div>
         <div class="jumbotron">
             <h3>Добавить актера</h3>
             <div class="form-horizontal" method="post" action="${pageContext.request.contextPath}/actors">
@@ -64,7 +67,6 @@
                     Режисер.
                 </label>
                 <br>
-
                 <div class="control-group">
                     <div class="controls">
                         <button type="submit" class="btn btn-primary btn-lg"> Сохранить актера в базе</button>
@@ -75,9 +77,7 @@
             <br>
         </div>
         </form>
-
         <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/people-full-info2">
-
             <div class="jumbotron">
                 <div class="container">
                     <select name="peopleListDropdown">
@@ -106,18 +106,23 @@
     </div>
     <div class="col-md-5 bs-col">
         <br>
-        <h1 align="center">Визитные карточки актеров</h1>
-
-
+        <br>
+        <div class="alert alert-success">
+            <h1 align="center">Визитные карточки актеров</h1>
+        </div>
         <div class="jumbotron">
             <div class="container">
 
-                <c:forEach items="${requestScope.people}" var="people">
+                <ol>
                     <p>
-                        <a href="${pageContext.request.contextPath}/people-full-info?id=${people.id}">${people.name} ${people.family}</a>
+                        <c:forEach items="${requestScope.people}" var="people">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/people-full-info?id=${people.id}">${people.name} ${people.family}</a>
+                            </li>
+                        </c:forEach>
                     </p>
-                </c:forEach>
 
+                </ol>
 
             </div>
         </div>
