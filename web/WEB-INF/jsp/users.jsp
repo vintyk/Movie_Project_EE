@@ -21,6 +21,10 @@
             href="${pageContext.request.contextPath}/users" title="Отзывы"> ПОЛЬЗОВАТЕЛИ </A></li>
     <li method="post" action="${pageContext.request.contextPath}/users"><A
             href="${pageContext.request.contextPath}/logout" title="Выход"> ВЫХОД - <strong>${sessionScope.user}</strong> </A></li>
+    <c:if test="${sessionScope.privilege eq '1'}">
+        <li method="post" action="${pageContext.request.contextPath}/adminTool"><A
+                href="${pageContext.request.contextPath}/adminTool" title="Отзывы"> АДМИНИСТРАТОР </A></li>
+    </c:if>
     </div>
 </ul>
 <br>

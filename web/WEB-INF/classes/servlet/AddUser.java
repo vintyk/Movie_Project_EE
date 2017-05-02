@@ -57,4 +57,3 @@ public class AddUser extends HttpServlet {
         requestDispatcher.forward(req, resp);
         }
     }
-//http://localhost:8080/AddUser?nameUser=Петр&familyUser=Воронцов&sNameUser=Львович&passwordUser=1234&privilegeUser=2&eMailUser=vp@ecp.by
