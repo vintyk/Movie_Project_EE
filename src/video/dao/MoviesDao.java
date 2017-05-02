@@ -1,6 +1,6 @@
 package video.dao;
 
-import video.Entity.Movies;
+import video.Entity.*;
 import video.connection.ConnectionManager;
 
 import java.sql.*;
@@ -12,6 +12,9 @@ import java.util.Optional;
  * Created by Vinty on 09.04.2017.
  */
 public class MoviesDao {
+    private static final String MOVIES_TABLE_NAME = "movies";
+    private static final String GENRES_TABLE_NAME = "genres";
+    private static final String COUNTRIES_TABLE_NAME = "countries";
     private static final Object LOCK = new Object();
     private static MoviesDao INSTANCE = null;
 
@@ -26,143 +29,118 @@ public class MoviesDao {
         return INSTANCE;
     }
 
-    public Optional<Movies> save (Movies movies) {
+    private Movies createMoviesFromResultSet(ResultSet resultSet) throws SQLException {
+        return new Movies(
+                resultSet.getLong(MOVIES_TABLE_NAME + ".id"),
+                resultSet.getString(MOVIES_TABLE_NAME + ".name"),
+                resultSet.getString(MOVIES_TABLE_NAME + ".year"),
+                new Genres(
+                        resultSet.getLong(GENRES_TABLE_NAME + ".id"),
+                        resultSet.getString(GENRES_TABLE_NAME + ".name")),
+                new Countries(
+                        resultSet.getLong(COUNTRIES_TABLE_NAME + ".id"),
+                        resultSet.getString(COUNTRIES_TABLE_NAME + ".name")));
+    }
+
+    private Movies createMoviesYearFromResultSet(ResultSet resultSet) throws SQLException {
+        return new Movies(
+                resultSet.getLong(MOVIES_TABLE_NAME + ".id"),
+                resultSet.getString(MOVIES_TABLE_NAME + ".year"));
+    }
+
+    public void create(Movies movies, long genreId, long countrieId) {
         try (Connection connection = ConnectionManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO movies (name, genre, countrie, year)" +
-                            " VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                    "INSERT INTO movies (name, year, genre, countrie) " +
+                            "VALUES (?, ?, ?, ?)")) {
                 preparedStatement.setString(1, movies.getNameMovie());
-                preparedStatement.setInt(2, movies.getGenreMovie());
-                preparedStatement.setInt(3, movies.getCountryMovie());
-                preparedStatement.setString(4, movies.getDateReleaseMovie());
+                preparedStatement.setString(2, movies.getDateReleaseMovie());
+                preparedStatement.setLong(3, genreId);
+                preparedStatement.setLong(4, countrieId);
                 preparedStatement.executeUpdate();
-                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-                if(generatedKeys.next()){
-                    movies.setId(generatedKeys.getLong(1));
-                    return Optional.of(movies);
-                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Optional.empty();
     }
 
-    public Optional<Movies> getMovieById(long id) {
-        try(Connection connection = ConnectionManager.getConnection()) {
-            try(PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT * FROM movies WHERE id = ?")) {
-                preparedStatement.setLong(1, id);
-                ResultSet resultSet = preparedStatement.executeQuery();
-                if (resultSet.next()) {
-                    return Optional.of(new Movies(id,
-                            resultSet.getString("name"),
-                            resultSet.getInt("genre"),
-                            resultSet.getInt("countrie"),
-                            resultSet.getString("year")));
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return Optional.empty();
-    }
-
-    public static List<Movies> getMoviesByYear(int year) {
-        List<Movies> result = new ArrayList<>();
+    public Optional<Movies> findById(long id) {
         try (Connection connection = ConnectionManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT movies.name,\n" +
-                            "       Year(movies.year),\n" +
-                            "       countries.name,\n" +
+                    "SELECT genres.id,\n" +
                             "       genres.name,\n" +
-                            "       movies.id\n" +
-                            "FROM (movies_project.movies movies\n" +
-                            "      INNER JOIN movies_project.countries countries\n" +
+                            "       movies.id,\n" +
+                            "       movies.name,\n" +
+                            "       movies.genre,\n" +
+                            "       movies.countrie,\n" +
+                            "       movies.year,\n" +
+                            "       countries.id,\n" +
+                            "       countries.name\n" +
+                            "FROM (movies_project.movies  AS  movies\n" +
+                            "      INNER JOIN movies_project.countries AS countries\n" +
                             "         ON (movies.countrie = countries.id))\n" +
                             "     INNER JOIN movies_project.genres genres ON (movies.genre = genres.id)\n" +
-                            "    where year(movies.year) = ?\n" +
-                            "ORDER BY movies.name ASC")) {
-                preparedStatement.setInt(1, year);
+                            "     where movies.id = ?;")) {
+                preparedStatement.setLong(1, id);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    while(resultSet.next()) {
-                        long idMovie = resultSet.getLong("movies.id");
-                        String nameMovie = resultSet.getString("movies.name");
-                        String dateReleaseMovie = resultSet.getString("Year(movies.year)");
-                        int genreMovie = resultSet.getInt("genres.name");
-                        int countryMovie = resultSet.getInt("countries.name");
-                        Movies movies = new Movies(idMovie, nameMovie, genreMovie, countryMovie, dateReleaseMovie);
-                        result.add(movies);
+                    if (resultSet.next()) {
+                        return Optional.of(createMoviesFromResultSet(resultSet));
                     }
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return result;
+        return Optional.empty();
     }
 
-//    public static Movies getMovieById(long movieId) {
-//        try (Connection connection = ConnectionManager.getConnection()) {
-//            try (PreparedStatement preparedStatement = connection.prepareStatement(
-//                    "SELECT m.id,\n" +
-//                            "       m.name,\n" +
-//                            "       m.year,\n" +
-//                            "       g.name,\n" +
-//                            "       c.name,\n" +
-//                            "       r.name,\n" +
-//                            "       p.Id,\n" +
-//                            "       p.name,\n" +
-//                            "       p.family,\n" +
-//                            "       p.s_name,\n" +
-//                            "       p.date_bday\n" +
-//                            "FROM ((((movies_project.people AS p\n" +
-//                            "         INNER JOIN movies_project.roles AS r\n" +
-//                            "            ON (p.id_role = r.id))\n" +
-//                            "        INNER JOIN movies_project.movie_people_role movie_people_role\n" +
-//                            "           ON     (movie_people_role.id_role = r.id)\n" +
-//                            "              AND (movie_people_role.id_people = p.Id))\n" +
-//                            "       INNER JOIN movies_project.movies AS m\n" +
-//                            "          ON (movie_people_role.id_movie = m.id))\n" +
-//                            "      INNER JOIN movies_project.genres AS g\n" +
-//                            "         ON (m.genre = g.id))\n" +
-//                            "     INNER JOIN movies_project.countries AS c\n" +
-//                            "        ON (m.countrie = c.id)\n" +
-//                            "        WHERE m.id = ?\n" +
-//                            "ORDER BY m.id ASC, r.name DESC")) {
-//                preparedStatement.setLong(1, movieId);
-//                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-//                    while (resultSet.next()) {
-//                        long idMovie = resultSet.getLong("m.id");
-//                        String nameMovie = resultSet.getString("m.name");
-//                        String dateReleaseMovie = resultSet.getString("m.year");
-//                        String genreMovie = resultSet.getString("g.name");
-//                        String countryMovie = resultSet.getString("c.name");
-//                        int role = resultSet.getInt("r.name");
-//                        long idPeople = resultSet.getLong("p.id");
-//                        String namePeople = resultSet.getString("p.name");
-//                        String familyPeople = resultSet.getString("p.family");
-//                        String sNamePeople = resultSet.getString("p.s_name");
-//                        String dateOfBirthPeople = resultSet.getString("p.date_bday");
-//
-//                        People people = new People(idPeople,
-//                                namePeople,
-//                                familyPeople,
-//                                sNamePeople,
-//                                dateOfBirthPeople,
-//                                role);
-//                        return new Movies(idMovie,
-//                                nameMovie,
-//                                genreMovie,
-//                                countryMovie,
-//                                dateReleaseMovie,
-//                                people);
-//                    }
-//                }
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+    public List<Movies> findAll() {
+        List<Movies> movies = new ArrayList<>();
+        try (Connection connection = ConnectionManager.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT genres.id,\n" +
+                            "   genres.name,\n" +
+                            "   movies.id,\n" +
+                            "   movies.name,\n" +
+                            "   movies.genre,\n" +
+                            "   movies.countrie,\n" +
+                            "   movies.year,\n" +
+                            "   countries.id,\n" +
+                            "   countries.name\n" +
+                            "FROM (movies_project.movies  AS  movies\n" +
+                            "  INNER JOIN movies_project.countries AS countries\n" +
+                            "     ON (movies.countrie = countries.id))\n" +
+                            " INNER JOIN movies_project.genres genres ON (movies.genre = genres.id);")) {
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        movies.add(createMoviesFromResultSet(resultSet));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
+    public List<Movies> findAllYear() {
+        List<Movies> movies = new ArrayList<>();
+        try (Connection connection = ConnectionManager.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT \n" +
+                            "       movies.id,\n" +
+                            "       movies.year\n" +
+                            "FROM movies_project.movies\n" +
+                            "ORDER BY 2 ASC")) {
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        movies.add(createMoviesYearFromResultSet(resultSet));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
 }

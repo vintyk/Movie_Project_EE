@@ -19,19 +19,21 @@
             href="${pageContext.request.contextPath}/reviews" title="Отзывы"> ОТЗЫВЫ </A></li>
     <li method="post" action="${pageContext.request.contextPath}/users"><A
             href="${pageContext.request.contextPath}/users" title="Отзывы"> ПОЛЬЗОВАТЕЛИ </A></li>
+    <li method="post" action="${pageContext.request.contextPath}/users"><A
+            href="${pageContext.request.contextPath}/logout" title="Выход"> ВЫХОД - <strong>${sessionScope.user}</strong></A></li>
     </div>
 </ul>
 <br>
 
 <div class="container-fluid bs-cont">
-    <div class="col-md-4 bs-col"><br>
+    <div class="col-md-5 bs-col"><br>
         <br>
         <div class="alert alert-success">
             <h1 align="center">Aктеры</h1>
         </div>
         <div class="jumbotron">
             <h3>Добавить актера</h3>
-            <div class="form-horizontal" method="post" action="${pageContext.request.contextPath}/actors">
+            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/actors">
                 <div class="control-group">
                     <label class="control-label" for="inputName">Введите имя актера</label>
                     <div class="controls">
@@ -72,11 +74,11 @@
                         <button type="submit" class="btn btn-primary btn-lg"> Сохранить актера в базе</button>
                     </div>
                 </div>
-            </div>
+            </form>
             <br>
             <br>
         </div>
-        </form>
+
         <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/people-full-info2">
             <div class="jumbotron">
                 <div class="container">
@@ -116,12 +118,11 @@
                 <ol>
                     <p>
                         <c:forEach items="${requestScope.people}" var="people">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/people-full-info?id=${people.id}">${people.name} ${people.family}</a>
-                            </li>
-                        </c:forEach>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/people-full-info?id=${people.id}">${people.name} ${people.family}</a>
+                    </li>
+                    </c:forEach>
                     </p>
-
                 </ol>
 
             </div>

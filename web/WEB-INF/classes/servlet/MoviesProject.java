@@ -1,6 +1,10 @@
 package servlet;
 
-import javax.servlet.RequestDispatcher;
+import Services.CountryServices;
+import Services.GenresServices;
+import Services.MovieServices;
+import Services.PeopleServices;
+import dto.CreateMoviesDto;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,18 +19,27 @@ import java.io.IOException;
 public class MoviesProject extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html;charset=utf-8");
-        RequestDispatcher requestDispatcher
-                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/moviesProject.jsp");
-        requestDispatcher.forward(req, resp);
+        showPage(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html;charset=utf-8");
-        RequestDispatcher requestDispatcher
-                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/moviesProject.jsp");
-        requestDispatcher.forward(req, resp);
+        MovieServices.getInstance().createNewMovie(getRequestForCrtMovies(req));
+        showPage(req, resp);
+    }
+
+    private void showPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("genres", GenresServices.getInstance().getAllGenres());
+        req.setAttribute("countries", CountryServices.getInstance().getAllCountries());
+        req.setAttribute("movies", MovieServices.getInstance().getAllMovies());
+        req.setAttribute("year", MovieServices.getInstance().getAllMoviesYear());
+        //req.setAttribute("movies_full", MovieServices.getInstance().getFullInfo(Integer.valueOf(req.getParameter("moviesListDropdown"))));
+        getServletContext().getRequestDispatcher("/WEB-INF/jsp/moviesProject.jsp").forward(req, resp);
+    }
+    private CreateMoviesDto getRequestForCrtMovies (HttpServletRequest request) {
+        return new CreateMoviesDto(
+                request.getParameter("nameMovie"),
+                request.getParameter("dateOfMovie"),
+                Long.valueOf(request.getParameter("genres")),
+                Long.valueOf(request.getParameter("countries")));
     }
 }

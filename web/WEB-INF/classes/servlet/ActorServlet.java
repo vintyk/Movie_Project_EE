@@ -40,5 +40,4 @@ public class ActorServlet extends HttpServlet {
                 request.getParameter("dateOfBirthPeople"),
                 Long.valueOf(request.getParameter("rolesId")));
     }
-
 }

@@ -10,18 +10,29 @@
 <body>
 <ul class="nav nav-pills navbar navbar-default navbar-fixed-top">
     <div class="container"></div>
-    <li method="post" action="${pageContext.request.contextPath}/moviesProject"><A href="${pageContext.request.contextPath}/moviesProject"  title="Фильмы"> ФИЛЬМЫ </A></li>
-    <li method="post" action="${pageContext.request.contextPath}/actors"><A href="${pageContext.request.contextPath}/actors"  title="Актеры"> АКТЕРЫ </A></li>
-    <li class="active" method="post" action="${pageContext.request.contextPath}/reviews"><A href="${pageContext.request.contextPath}/reviews"  title="Отзывы"> ОТЗЫВЫ </A></li>
-    <li method="post" action="${pageContext.request.contextPath}/users"><A href="${pageContext.request.contextPath}/users"  title="Отзывы"> ПОЛЬЗОВАТЕЛИ </A></li>
+    <li method="post" action="${pageContext.request.contextPath}/moviesProject"><A
+            href="${pageContext.request.contextPath}/moviesProject" title="Фильмы"> ФИЛЬМЫ </A></li>
+    <li method="post" action="${pageContext.request.contextPath}/actors"><A
+            href="${pageContext.request.contextPath}/actors" title="Актеры"> АКТЕРЫ </A></li>
+    <li class="active" method="post" action="${pageContext.request.contextPath}/reviews"><A
+            href="${pageContext.request.contextPath}/reviews" title="Отзывы"> ОТЗЫВЫ </A></li>
+    <li method="post" action="${pageContext.request.contextPath}/users"><A
+            href="${pageContext.request.contextPath}/users" title="Отзывы"> ПОЛЬЗОВАТЕЛИ </A></li>
+    <li method="post" action="${pageContext.request.contextPath}/users"><A
+            href="${pageContext.request.contextPath}/logout" title="Выход"> ВЫХОД - <strong>${sessionScope.user}</strong></A></li>
+
     </div>
 </ul>
 <br>
 <div class="container-fluid bs-cont">
-    <div class="col-md-6 bs-col"> <br>
-        <h1>Отзывы</h1>
+    <div class="col-md-4 bs-col">
+        <br>
+        <br>
+        <div class="alert alert-success">
+            <h1 align="center">Отзывы</h1>
+        </div>
         <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/reviews">
-            <button type="submit" class="btn btn-primary btn-lg" > Все отзывы </button>
+            <button type="submit" class="btn btn-primary btn-lg"> Все отзывы</button>
         </form>
         <br>
     </div>

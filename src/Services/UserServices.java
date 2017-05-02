@@ -1,5 +1,9 @@
 package Services;
+import dto.ViewPeopleFullInfoDto;
+import dto.ViewUserByEmailDto;
+import video.Entity.People;
 import video.Entity.Users;
+import video.dao.PeopleDao;
 import video.dao.UsersDao;
 import java.util.Optional;
 /**
@@ -20,18 +24,19 @@ public class UserServices {
         return INSTANCE;
     }
 
-
-
-
-//    public int getUserInfo(long userId) {
-//        Optional<Users> userInfo = UsersDao.getInstance().addUser(userId);
-//        if (userInfo.isPresent()) {
-//            return userInfo.get().;
-//        }
-//        return 0;
-//    }
-
-
+    public ViewUserByEmailDto getUserByEmail(String eMail) {
+        Optional<Users> usersOptional = UsersDao.getInstance().find(eMail);
+        if (!usersOptional.isPresent()) {
+            throw new IllegalArgumentException("Не существует пользователя с такими параметрами!");
+        }
+        Users users = usersOptional.get();
+        return new ViewUserByEmailDto(
+                users.getNameUser(),
+                users.geteMailUser(),
+                users.getPasswordUser(),
+                users.getPrivilegeUser()
+        );
+    }
 }
 //    public Optional<Users> userOptional = UsersDao.getInstance().addUser(
 //            new Users( "Елена",

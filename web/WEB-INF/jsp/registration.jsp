@@ -11,8 +11,12 @@
 </head>
 <body>
 
-<div class="col-md-4 bs-col"> <br>
-    <h1>Регистрация пользователя</h1>
+<div class="col-md-4 bs-col">
+    <br>
+    <br>
+    <div class="alert alert-success">
+    <h1 align="center">Регистрация пользователя</h1>
+    </div>
     <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/addUser">
         <div class="control-group">
             <label class="control-label" for="inputEmail">Введите логин (E-Mail)</label>

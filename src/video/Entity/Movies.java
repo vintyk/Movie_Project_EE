@@ -6,32 +6,43 @@ package video.Entity;
 public class Movies {
     private long id;
     private String nameMovie;
-    private int genreMovie;
-    private int countryMovie;
+    private long genreMovie;
+    private long countrieMovie;
     private String dateReleaseMovie;
-    private People people;
+    private Genres genres;
+    private Countries countries;
 
-    public Movies(long id, String nameMovie, int genreMovie, int countryMovie,
-                   String dateReleaseMovie, People people) {
+    public Movies(long id, String dateReleaseMovie) {
+        this.id = id;
+        this.dateReleaseMovie = dateReleaseMovie;
+    }
+
+    public Movies(String nameMovie, String dateReleaseMovie) {
+        this.nameMovie = nameMovie;
+        this.dateReleaseMovie = dateReleaseMovie;
+    }
+
+    public Movies(long id, String nameMovie, String dateReleaseMovie, Genres genres, Countries countries) {
         this.id = id;
         this.nameMovie = nameMovie;
-        this.genreMovie = genreMovie;
-        this.countryMovie = countryMovie;
         this.dateReleaseMovie = dateReleaseMovie;
-        this.people = people;
+        this.genres = genres;
+        this.countries = countries;
     }
-    public Movies(long id, String nameMovie, int genreMovie, int countryMovie,
+
+    public Movies(long id, String nameMovie, long genreMovie, long countrieMovie,
                   String dateReleaseMovie) {
         this.id = id;
         this.nameMovie = nameMovie;
         this.genreMovie = genreMovie;
-        this.countryMovie = countryMovie;
+        this.countrieMovie = countrieMovie;
         this.dateReleaseMovie = dateReleaseMovie;
     }
-    public Movies(String nameMovie, int genreMovie, int countryMovie, String dateReleaseMovie){
+
+    public Movies(String nameMovie, long genreMovie, long countrieMovie, String dateReleaseMovie){
         this.nameMovie = nameMovie;
         this.genreMovie = genreMovie;
-        this.countryMovie = countryMovie;
+        this.countrieMovie = countrieMovie;
         this.dateReleaseMovie = dateReleaseMovie;
     }
 
@@ -51,20 +62,20 @@ public class Movies {
         this.nameMovie = nameMovie;
     }
 
-    public int getGenreMovie() {
+    public long getGenreMovie() {
         return genreMovie;
     }
 
-    public void setGenreMovie(int genreMovie) {
+    public void setGenreMovie(long genreMovie) {
         this.genreMovie = genreMovie;
     }
 
-    public int getCountryMovie() {
-        return countryMovie;
+    public long getCountrieMovie() {
+        return countrieMovie;
     }
 
-    public void setCountryMovie(int countryMovie) {
-        this.countryMovie = countryMovie;
+    public void setCountrieMovie(long countrieMovie) {
+        this.countrieMovie = countrieMovie;
     }
 
     public String getDateReleaseMovie() {
@@ -75,24 +86,19 @@ public class Movies {
         this.dateReleaseMovie = dateReleaseMovie;
     }
 
-    public People getPeople() {
-        return people;
+    public Genres getGenres() {
+        return genres;
     }
 
-    public void setPeople(People people) {
-        this.people = people;
+    public void setGenres(Genres genres) {
+        this.genres = genres;
     }
 
-    @Override
-    public String toString() {
-        return "Movies{" +
-                "id=" + id +
-                ", nameMovie='" + nameMovie + '\'' +
-                ", genreMovie='" + genreMovie + '\'' +
-                ", countryMovie='" + countryMovie + '\'' +
-                ", dateReleaseMovie=" + dateReleaseMovie +
-                ", people=" + people +
-                '}';
+    public Countries getCountries() {
+        return countries;
     }
 
+    public void setCountries(Countries countries) {
+        this.countries = countries;
+    }
 }

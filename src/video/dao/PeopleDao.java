@@ -3,8 +3,6 @@ package video.dao;
 import video.Entity.People;
 import video.Entity.Roles;
 import video.connection.ConnectionManager;
-
-import javax.management.relation.Role;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

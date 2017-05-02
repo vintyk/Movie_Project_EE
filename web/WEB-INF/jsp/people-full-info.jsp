@@ -16,7 +16,7 @@
         <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/moviesProject">
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" class="btn btn-success btn-lg" > На главную </button>
+                    <button type="submit" class="btn btn-success btn-lg"> На главную</button>
                 </div>
             </div>
         </form>

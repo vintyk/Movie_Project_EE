@@ -1,9 +1,7 @@
 package servlet;
 
-        import Services.PeopleServices;
         import Services.UserServices;
         import dto.ViewUserByEmailDto;
-        import video.Entity.Users;
 
         import javax.servlet.ServletException;
         import javax.servlet.annotation.WebServlet;
@@ -16,6 +14,7 @@ package servlet;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().setAttribute("message", "messageEnter");
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
     }
 
@@ -23,10 +22,12 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userInputEmail = req.getParameter("inputEmail");
         String userInputPassword = req.getParameter("inputPassword");
+        String userLang = req.getParameter("lang");
+        req.getSession().setAttribute("localLang", userLang);
         //req.setAttribute("message", "");
 
         if (userInputEmail.isEmpty() || userInputPassword.isEmpty()) {
-            req.setAttribute("message", "Поля Логина и Пароля должны быть заполнены.");
+            req.getSession().setAttribute("message", "messageMustFull");
             doGet(req, resp);
             return;
         } else {
@@ -40,9 +41,10 @@ public class LoginServlet extends HttpServlet {
                 req.getSession().setAttribute("user", nameUser);
                 req.getSession().setAttribute("privilege", privilege);
                 req.setAttribute("message", "Все ОК!");
+
                 resp.sendRedirect("/moviesProject");
             }else {
-                req.setAttribute("message", "Вы ошиблись в имени пользователя или пароля.");
+                req.setAttribute("message", "errorPass");
                 doGet(req, resp);
             }
         }
