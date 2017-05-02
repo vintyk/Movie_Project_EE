@@ -47,6 +47,11 @@ public class MoviesDao {
                 resultSet.getLong(MOVIES_TABLE_NAME + ".id"),
                 resultSet.getString(MOVIES_TABLE_NAME + ".year"));
     }
+    private Movies createMoviesByYearFromResultSet(ResultSet resultSet) throws SQLException {
+        return new Movies(
+                resultSet.getString(MOVIES_TABLE_NAME + ".name"),
+                resultSet.getString(MOVIES_TABLE_NAME + ".year"));
+    }
 
     public void create(Movies movies, long genreId, long countrieId) {
         try (Connection connection = ConnectionManager.getConnection()) {
@@ -135,6 +140,28 @@ public class MoviesDao {
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
                         movies.add(createMoviesYearFromResultSet(resultSet));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+    public List<Movies> findAllMovieByYear(String year) {
+        List<Movies> movies = new ArrayList<>();
+        try (Connection connection = ConnectionManager.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT \n" +
+                            "   movies.name,\n" +
+                            "   movies.year \n" +
+                            "FROM movies_project.movies  AS  movies\n" +
+                            "           WHERE YEAR(movies.year)= ?")) {
+                preparedStatement.setString(1, year);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        System.out.println(createMoviesByYearFromResultSet(resultSet));
+                        movies.add(createMoviesByYearFromResultSet(resultSet));
                     }
                 }
             }

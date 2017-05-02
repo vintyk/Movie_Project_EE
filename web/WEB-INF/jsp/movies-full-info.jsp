@@ -6,17 +6,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <title>People-full-Info</title>
+    <title>Movie-full-Info</title>
 
 </head>
 <body>
 
 <div class="container-fluid bs-cont">
     <div class="col-md-6 bs-col"><br>
-        <form class="form-horizontal" method="get" action="${pageContext.request.contextPath}/actors">
+        <form class="form-horizontal" method="get" action="${pageContext.request.contextPath}/moviesProject">
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" class="btn btn-success btn-lg"> Назад </button>
+                    <button type="submit" class="btn btn-success btn-lg"> На главную </button>
                 </div>
             </div>
         </form>
@@ -24,8 +24,8 @@
 
         <div class="jumbotron">
             <div class="container">
-                <P> Имя: ${requestScope.people_full.namePeople}
-                <p> Фамилия: ${requestScope.people_full.familyPeople}</p>
+                <P> Имя: ${requestScope.movies_full.namePeople}
+                <p> Фамилия: ${requestScope.movies_full.familyPeople}</p>
                 <p> Отчество: ${requestScope.people_full.sNamePeople} </p>
                 <p> Год рождения: ${requestScope.people_full.dateOfBirthPeople}</P>
                 <p> ${requestScope.people_full.rolePeople} </p>

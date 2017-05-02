@@ -1,8 +1,5 @@
 package servlet;
 import Services.PeopleServices;
-import dto.CreatePeopleDto;
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,13 +21,12 @@ public class ActorsServletDetail extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("people", PeopleServices.getInstance().getAllPeople());
         req.setAttribute("people_full", PeopleServices.getInstance().getFullInfo(Integer.valueOf(req.getParameter("peopleListDropdown"))));
-       showPage(req, resp);
+        //resp.sendRedirect("/WEB-INF/jsp/moviesProject");
+        showPage(req, resp);
     }
 
     private void showPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/actors.jsp").forward(req, resp);
+
     }
-
-
-
 }

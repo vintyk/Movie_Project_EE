@@ -52,7 +52,13 @@ public class MovieServices {
                         moviesEntity.getDateReleaseMovie()))
                 .collect(Collectors.toList());
     }
-
+    public List<ViewMoviesYearDto> getAllMoviesByYear(String year) {
+        return MoviesDao.getInstance().findAllMovieByYear(year).stream()
+                .map(moviesEntity -> new ViewMoviesYearDto(
+                        moviesEntity.getNameMovie(),
+                        moviesEntity.getDateReleaseMovie()))
+                .collect(Collectors.toList());
+    }
     public ViewMoviesFullInfo getFullInfo(long id) {
         Optional<Movies> moviesOptional = MoviesDao.getInstance().findById(id);
         if (!moviesOptional.isPresent()) {

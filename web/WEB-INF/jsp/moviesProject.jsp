@@ -27,7 +27,7 @@
 </ul>
 <br>
 <div class="container-fluid bs-cont">
-    <div class="col-md-3 bs-col">
+    <div class="col-md-5 bs-col">
         <br>
         <br>
         <div class="alert alert-success">
@@ -50,8 +50,8 @@
                         </c:forEach>
                     </select>
                     <br>
-                    <label class="control-label" for="countr">Выберете страну</label>
-                    <select name="countries" id="countr">
+                    <label class="control-label" for="countries">Выберете страну</label>
+                    <select name="countries" id="countries">
                         <c:forEach items="${requestScope.countries}" var="countries">
                             <option value="${countries.id}">${countries.name} </option>
                         </c:forEach>
@@ -75,27 +75,34 @@
             <br>
             <br>
         </div>
-        <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/people-full-info2">
+        <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/movies-full-info2">
             <div class="jumbotron">
                 <div class="container">
-                    <select name="year">
+                    <select name="yearSelect">
                         <c:forEach items="${requestScope.year}" var="year">
-                            <option value="${year.id}">${year.dateReleaseMovie}</option>
+                            <option value="${year.dateReleaseMovie}">${year.dateReleaseMovie}</option>
                         </c:forEach>
                     </select>
                     <br>
                     <br>
-                    <button type="submit" class="btn btn-primary btn-lg"> Выбрать фильм</button>
+                    <button type="submit" class="btn btn-primary btn-lg"> Фильмы в этом году </button>
                     <br>
                 </div>
                 <br>
                 <div class="well well-lg">
-                    <h3 class="text-success">Детальное описание.</h3>
-                    <%--<p> Имя: <strong>${requestScope.people_full.namePeople}</strong></p>--%>
-                    <%--<p> Фамилия: <strong>${requestScope.people_full.familyPeople}</strong></p>--%>
-                    <%--<p> Отчество: <strong>${requestScope.people_full.sNamePeople}</strong></p>--%>
-                    <%--<p> Год рождения: <strong>${requestScope.people_full.dateOfBirthPeople}</strong></p>--%>
-                    <%--<p class="text-success"><strong> ${requestScope.people_full.rolePeople} </strong></p>--%>
+                    <ol>
+                        <p>
+                            <c:forEach items="${requestScope.movies_year}" var="movies_year">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/movies-full-info2?id=${movies_year.name}">${movies_year.name}</a>
+                        </li>
+                        </c:forEach>
+                        </p>
+                    </ol>
+                    <%--<h3 class="text-success">Детальное описание.</h3>--%>
+                    <%--<p> Имя: <strong>${requestScope.movies_year.namePeople}</strong></p>--%>
+                    <%--<p> Год: <strong>${requestScope.movies_year.familyPeople}</strong></p>--%>
+                    <p class="text-success"><strong> ${requestScope.people_full.rolePeople} </strong></p>
                 </div>
             </div>
         </form>
@@ -114,7 +121,7 @@
                     <p>
                         <c:forEach items="${requestScope.movies}" var="movies">
                     <li>
-                        <a href="${pageContext.request.contextPath}/people-full-info?id=${movies.id}">${movies.nameMovie}</a>
+                        <a href="${pageContext.request.contextPath}/movies-full-info2?id=${movies.id}">${movies.nameMovie}</a>
                     </li>
                     </c:forEach>
                     </p>
