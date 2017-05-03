@@ -89,7 +89,7 @@
                     </select>
                     <br>
                     <br>
-                    <button type="submit" class="btn btn-primary btn-lg"> Фильмы в этом году </button>
+                    <button type="submit" class="btn btn-primary btn-lg"> Фильмы в этом году</button>
                     <br>
                 </div>
                 <br>
@@ -98,15 +98,11 @@
                         <p>
                             <c:forEach items="${requestScope.movies_year}" var="movies_year">
                         <li>
-                            <a href="${pageContext.request.contextPath}/movies-full-info2?id=${movies_year.name}">${movies_year.name}</a>
+                            <a href="${pageContext.request.contextPath}/movies-full-info?id=${movies_year.id}">${movies_year.name}</a>
                         </li>
                         </c:forEach>
                         </p>
                     </ol>
-                    <%--<h3 class="text-success">Детальное описание.</h3>--%>
-                    <%--<p> Имя: <strong>${requestScope.movies_year.namePeople}</strong></p>--%>
-                    <%--<p> Год: <strong>${requestScope.movies_year.familyPeople}</strong></p>--%>
-                    <p class="text-success"><strong> ${requestScope.people_full.rolePeople} </strong></p>
                 </div>
             </div>
         </form>
@@ -118,18 +114,20 @@
         <br>
         <div class="alert alert-success">
             <h1 align="center">Список фильмов</h1>
-        </div>
-        <div class="jumbotron">
-            <div class="container">
-                <ol>
-                    <p>
-                        <c:forEach items="${requestScope.movies}" var="movies">
-                    <li>
-                        <a href="${pageContext.request.contextPath}/movies-full-info2?id=${movies.id}">${movies.nameMovie}</a>
-                    </li>
-                    </c:forEach>
-                    </p>
-                </ol>
+            <div class="panel panel-success">
+                <div class="container">
+                    <div id="" style="overflow-y:scroll; overflow-x:hidden; height:470px;">
+                        <ol>
+                            <p>
+                                <c:forEach items="${requestScope.movies}" var="movies">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/movies-full-info?id=${movies.id}">${movies.nameMovie}</a>
+                            </li>
+                            </c:forEach>
+                            </p>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
