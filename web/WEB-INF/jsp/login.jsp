@@ -14,14 +14,16 @@
  <!-- Не работает вставка картинки -->
  <!-- <img  src="/img/login.png" border="0"  alt="login" > -->
 <br>
-<div class="col-md-4 bs-col">
+<h3 class="col-md-4 bs-col">
     <br>
     <br>
     <div class="alert alert-success">
 <h1 align="center"><fmt:message key="EnterSys"/></h1>
     </div>
-    <em><fmt:message key="${message}"/></em>
-
+    <br>
+    <strong><em><fmt:message key="${message}"/></em></strong>
+    <br>
+    <br>
     <form class="form-inline" method="post" action="${pageContext.request.contextPath}/login">
         <div class="control-group">
             <label class="control-label" for="inputEmail"><fmt:message key="EnterUser"/></label>
@@ -29,6 +31,7 @@
                 <input type="text" id="inputEmail" name="inputEmail" placeholder="E-mail">
             </div>
         </div>
+        <br>
         <div class="control-group">
             <label class="control-label" for="inputPassword"><fmt:message key="EnterPass"/></label>
             <div class="controls">

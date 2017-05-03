@@ -1,9 +1,5 @@
 package servlet;
-import Services.CountryServices;
-import Services.GenresServices;
 import Services.MovieServices;
-import Services.PeopleServices;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

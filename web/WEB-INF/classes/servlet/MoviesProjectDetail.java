@@ -27,6 +27,7 @@ public class MoviesProjectDetail extends HttpServlet {
         req.setAttribute("movies", MovieServices.getInstance().getAllMovies());
         req.setAttribute("year", MovieServices.getInstance().getAllMoviesYear());
         req.setAttribute("movies_year", MovieServices.getInstance().getAllMoviesByYear(req.getParameter("yearSelect")));
+        req.setAttribute("people", PeopleServices.getInstance().getAllPeople());
         showPage(req, resp);
     }
 

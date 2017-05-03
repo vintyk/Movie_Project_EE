@@ -38,11 +38,3 @@ public class UserServices {
         );
     }
 }
-//    public Optional<Users> userOptional = UsersDao.getInstance().addUser(
-//            new Users( "Елена",
-//                    "Жукова",
-//                    "Леонидовна",
-//                    "qwerty3",
-//                    "ej@ecp.by"));
-//    }
-//        System.out.println(UsersDao.getInstance().getById(5L));

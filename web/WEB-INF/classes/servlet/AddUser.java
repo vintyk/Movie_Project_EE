@@ -50,7 +50,8 @@ public class AddUser extends HttpServlet {
                     passwordUser,
                     eMailUser
             ));
-            nameJSP = "regOK.jsp";
+            nameJSP = "login.jsp";
+            req.getSession().setAttribute("message", "regOk");
         }
         RequestDispatcher requestDispatcher
                 = getServletContext().getRequestDispatcher("/WEB-INF/jsp/" + nameJSP);

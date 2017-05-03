@@ -1,10 +1,9 @@
 package servlet;
-
-import Services.CountryServices;
-import Services.GenresServices;
-import Services.MovieServices;
-import Services.PeopleServices;
+import Services.*;
 import dto.CreateMoviesDto;
+import dto.ViewUserByEmailDto;
+import dto.CreateMoviesPeopleRoleDto;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +18,19 @@ import java.io.IOException;
 public class MoviesProject extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().setAttribute("message", "Заполните все поля.");
         showPage(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        MovieServices.getInstance().createNewMovie(getRequestForCrtMovies(req));
+        String userInputMovies = req.getParameter("nameMovie");
+        String userInputDate = req.getParameter("dateOfMovie");
+        if (userInputMovies.isEmpty() || userInputDate.isEmpty()) {
+            doGet(req, resp);
+            return;
+        } else {
+            MovieServices.getInstance().createNewMovie(getRequestForCrtMovies(req));
+        }
         showPage(req, resp);
     }
 
@@ -32,7 +39,11 @@ public class MoviesProject extends HttpServlet {
         req.setAttribute("countries", CountryServices.getInstance().getAllCountries());
         req.setAttribute("movies", MovieServices.getInstance().getAllMovies());
         req.setAttribute("year", MovieServices.getInstance().getAllMoviesYear());
-      // req.setAttribute("movies_full", MovieServices.getInstance().getFullInfo(Integer.valueOf(req.getParameter("moviesListDropdown"))));
+        req.setAttribute("people", PeopleServices.getInstance().getAllPeople());
+//        req.setAttribute("mpr", MoviePeopleRoleServices.getInstance().createNewMoviePeopleRole(
+//                (Integer.valueOf(req.getParameter("movieId"))),
+//                (Integer.valueOf(req.getParameter("peopleId"))),
+//                (Integer.valueOf(req.getParameter("roleId")))));
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/moviesProject.jsp").forward(req, resp);
     }
     private CreateMoviesDto getRequestForCrtMovies (HttpServletRequest request) {

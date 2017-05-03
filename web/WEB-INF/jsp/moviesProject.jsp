@@ -39,6 +39,10 @@
         </div>
 
         <div class="jumbotron">
+
+            <strong><em>${message}</em></strong>
+            <strong><em>${message2}</em></strong>
+
             <h3>Добавить фильм</h3>
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/moviesProject">
                 <div class="control-group">
@@ -77,6 +81,37 @@
                 </div>
             </form>
             <br>
+            <h3>Добавить участника в фильм</h3>
+            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/moviesProject">
+                <select name="yearSelect">
+                    <c:forEach items="${requestScope.movies}" var="movies">
+                        <option value="${movies.id}">${movies.nameMovie}</option>
+                    </c:forEach>
+                </select>
+                <br>
+                <br>
+                <div class="container">
+                    <select name="peopleListDropdown">
+                        <c:forEach items="${requestScope.people}" var="people">
+                            <option value="${people.id}">${people.name} ${people.family}</option>
+                        </c:forEach>
+                    </select>
+                    <br>
+                    <br>
+                    <select name="roleId">
+                        <option value="1" >Актер</option>
+                        <option value="2" >Режисер</option>
+                    </select>
+                    <br>
+                    <br>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary btn-lg"> Добавить участника в фильм</button>
+                    </div>
+                </div>
+            </form>
+            <br>
             <br>
         </div>
         <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/movies-full-info2">
@@ -87,6 +122,7 @@
                             <option value="${year.dateReleaseMovie}">${year.dateReleaseMovie}</option>
                         </c:forEach>
                     </select>
+
                     <br>
                     <br>
                     <button type="submit" class="btn btn-primary btn-lg"> Фильмы в этом году</button>
