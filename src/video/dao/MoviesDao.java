@@ -13,8 +13,10 @@ import java.util.Optional;
  */
 public class MoviesDao {
     private static final String MOVIES_TABLE_NAME = "movies";
+    private static final String PEOPLES_TABLE_NAME = "people";
     private static final String GENRES_TABLE_NAME = "genres";
     private static final String COUNTRIES_TABLE_NAME = "countries";
+    private static final String ROLES_TABLE_NAME = "roles";
     private static final Object LOCK = new Object();
     private static MoviesDao INSTANCE = null;
 
@@ -42,6 +44,19 @@ public class MoviesDao {
                         resultSet.getString(COUNTRIES_TABLE_NAME + ".name")));
     }
 
+    private Movies createMoviesPeopleFromResultSet(ResultSet resultSet) throws SQLException {
+        return new Movies(
+                resultSet.getLong(MOVIES_TABLE_NAME + ".id"),
+                resultSet.getString(MOVIES_TABLE_NAME + ".name"),
+                new People(
+                        resultSet.getLong(PEOPLES_TABLE_NAME + ".id"),
+                        resultSet.getString(PEOPLES_TABLE_NAME + ".name"),
+                        resultSet.getString(PEOPLES_TABLE_NAME + ".family")),
+                new Roles(
+                        resultSet.getString(ROLES_TABLE_NAME + ".name")));
+    }
+
+
     private Movies createMoviesYearFromResultSet(ResultSet resultSet) throws SQLException {
         return new Movies(
                 resultSet.getLong(MOVIES_TABLE_NAME + ".id"),
@@ -49,6 +64,7 @@ public class MoviesDao {
     }
     private Movies createMoviesByYearFromResultSet(ResultSet resultSet) throws SQLException {
         return new Movies(
+                resultSet.getLong(MOVIES_TABLE_NAME + ".id"),
                 resultSet.getString(MOVIES_TABLE_NAME + ".name"),
                 resultSet.getString(MOVIES_TABLE_NAME + ".year"));
     }
@@ -152,7 +168,7 @@ public class MoviesDao {
         List<Movies> movies = new ArrayList<>();
         try (Connection connection = ConnectionManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT \n" +
+                    "SELECT movies.id,  \n" +
                             "   movies.name,\n" +
                             "   movies.year \n" +
                             "FROM movies_project.movies  AS  movies\n" +
@@ -162,6 +178,39 @@ public class MoviesDao {
                     while (resultSet.next()) {
                         System.out.println(createMoviesByYearFromResultSet(resultSet));
                         movies.add(createMoviesByYearFromResultSet(resultSet));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+    public List<Movies> findAllMoviePeopleByID(long id) {
+        List<Movies> movies = new ArrayList<>();
+        try (Connection connection = ConnectionManager.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT movies.id,\n" +
+                            "       movies.name,\n" +
+                            "       people.id,\n" +
+                            "       people.name,\n" +
+                            "       people.family,\n" +
+                            "       roles.name\n" +
+                            "FROM ((movies_project.people    people\n" +
+                            "       INNER JOIN movies_project.roles roles\n" +
+                            "          ON (people.id_role = roles.id))\n" +
+                            "      INNER JOIN movies_project.movie_people_role movie_people_role\n" +
+                            "         ON     (movie_people_role.id_role = roles.id)\n" +
+                            "            AND (movie_people_role.id_people = people.Id))\n" +
+                            "     INNER JOIN movies_project.movies movies\n" +
+                            "        ON (movie_people_role.id_movie = movies.id)\n" +
+                            "WHERE movies.id = ?\n" +
+                            "ORDER BY roles.name DESC")) {
+                preparedStatement.setLong(1, id);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        System.out.println(createMoviesPeopleFromResultSet(resultSet));
+                        movies.add(createMoviesPeopleFromResultSet(resultSet));
                     }
                 }
             }

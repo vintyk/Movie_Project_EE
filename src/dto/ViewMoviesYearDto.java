@@ -13,7 +13,8 @@ public class ViewMoviesYearDto {
         this.dateReleaseMovie = dateReleaseMovie;
     }
 
-    public ViewMoviesYearDto(String name, String dateReleaseMovie) {
+    public ViewMoviesYearDto(long id, String name, String dateReleaseMovie) {
+        this.id = id;
         this.dateReleaseMovie = dateReleaseMovie;
         this.name = name;
     }

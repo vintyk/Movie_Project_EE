@@ -16,7 +16,7 @@
         <form class="form-horizontal" method="get" action="${pageContext.request.contextPath}/actors">
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" class="btn btn-success btn-lg"> Назад </button>
+                    <button type="submit" class="btn btn-success btn-lg"> Актеры </button>
                 </div>
             </div>
         </form>

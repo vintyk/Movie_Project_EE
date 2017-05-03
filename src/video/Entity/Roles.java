@@ -7,6 +7,10 @@ public class Roles {
     private long id;
     private String name;
 
+    public Roles(String name) {
+        this.name = name;
+    }
+
     public Roles(long id, String name) {
         this.id = id;
         this.name = name;

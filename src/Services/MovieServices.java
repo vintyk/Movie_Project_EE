@@ -52,13 +52,30 @@ public class MovieServices {
                         moviesEntity.getDateReleaseMovie()))
                 .collect(Collectors.toList());
     }
+
     public List<ViewMoviesYearDto> getAllMoviesByYear(String year) {
         return MoviesDao.getInstance().findAllMovieByYear(year).stream()
                 .map(moviesEntity -> new ViewMoviesYearDto(
+                        moviesEntity.getId(),
                         moviesEntity.getNameMovie(),
                         moviesEntity.getDateReleaseMovie()))
                 .collect(Collectors.toList());
     }
+
+    public List<ViewMoviesFullInfo> getAllMoviesPeopleByMovieID(long id) {
+        return MoviesDao.getInstance().findAllMoviePeopleByID(id).stream()
+                .map(moviesEntity -> new ViewMoviesFullInfo(
+                        moviesEntity.getId(),
+                        moviesEntity.getNameMovie(),
+                        moviesEntity.getPeople().getId(),
+                        moviesEntity.getPeople().getNamePeople(),
+                        moviesEntity.getPeople().getFamilyPeople(),
+                        moviesEntity.getRoles().getName()))
+                .collect(Collectors.toList());
+    }
+
+
+
     public ViewMoviesFullInfo getFullInfo(long id) {
         Optional<Movies> moviesOptional = MoviesDao.getInstance().findById(id);
         if (!moviesOptional.isPresent()) {
@@ -71,4 +88,5 @@ public class MovieServices {
                 movies.getGenres().getName(),
                 movies.getCountries().getName());
     }
+
 }

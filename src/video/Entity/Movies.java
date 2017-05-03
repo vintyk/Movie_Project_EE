@@ -11,12 +11,19 @@ public class Movies {
     private String dateReleaseMovie;
     private Genres genres;
     private Countries countries;
+    private Roles roles;
+    private People people;
 
     public Movies(long id, String dateReleaseMovie) {
         this.id = id;
         this.dateReleaseMovie = dateReleaseMovie;
     }
 
+    public Movies(long id, String nameMovie, String dateReleaseMovie) {
+        this.id = id;
+        this.nameMovie = nameMovie;
+        this.dateReleaseMovie = dateReleaseMovie;
+    }
     public Movies(String nameMovie, String dateReleaseMovie) {
         this.nameMovie = nameMovie;
         this.dateReleaseMovie = dateReleaseMovie;
@@ -44,6 +51,13 @@ public class Movies {
         this.genreMovie = genreMovie;
         this.countrieMovie = countrieMovie;
         this.dateReleaseMovie = dateReleaseMovie;
+    }
+
+    public Movies(long id, String nameMovie, People people, Roles roles) {
+        this.id = id;
+        this.nameMovie = nameMovie;
+        this.roles = roles;
+        this.people = people;
     }
 
     public long getId() {
@@ -100,5 +114,21 @@ public class Movies {
 
     public void setCountries(Countries countries) {
         this.countries = countries;
+    }
+
+    public Roles getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Roles roles) {
+        this.roles = roles;
+    }
+
+    public People getPeople() {
+        return people;
+    }
+
+    public void setPeople(People people) {
+        this.people = people;
     }
 }

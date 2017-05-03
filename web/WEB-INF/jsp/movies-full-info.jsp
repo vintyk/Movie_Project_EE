@@ -16,19 +16,28 @@
         <form class="form-horizontal" method="get" action="${pageContext.request.contextPath}/moviesProject">
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" class="btn btn-success btn-lg"> На главную </button>
+                    <button type="submit" class="btn btn-success btn-lg"> На главную</button>
                 </div>
             </div>
         </form>
-        <h1>Актер</h1>
+        <h1>Состав фильма</h1>
 
         <div class="jumbotron">
             <div class="container">
-                <P> Имя: ${requestScope.movies_full.namePeople}
-                <p> Фамилия: ${requestScope.movies_full.familyPeople}</p>
-                <p> Отчество: ${requestScope.people_full.sNamePeople} </p>
-                <p> Год рождения: ${requestScope.people_full.dateOfBirthPeople}</P>
-                <p> ${requestScope.people_full.rolePeople} </p>
+                <ol>
+                    <p>
+                        <c:forEach items="${requestScope.moviesPeople_full}" var="moviesPeople">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/people-full-info?id=${moviesPeople.peopleId}">${moviesPeople.namePeople} ${moviesPeople.familyPeople}</a>
+                    <p class="text-success"><strong> ${moviesPeople.nameRole} </strong></p>
+                    </li>
+                    </c:forEach>
+                    </p>
+                </ol>
+                <%--<p> Фамилия: ${requestScope.movies_full.familyPeople}</p>--%>
+                <%--<p> Отчество: ${requestScope.people_full.sNamePeople} </p>--%>
+                <%--<p> Год рождения: ${requestScope.movies_full.dateOfBirthPeople}</P>--%>
+                <%--<p> ${requestScope.movies_full.rolePeople} </p>--%>
             </div>
         </div>
 

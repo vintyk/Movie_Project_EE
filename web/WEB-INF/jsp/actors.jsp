@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <LINK REL="stylesheet" HREF="css/Style_basic.css" TYPE="text/css">
     <title>Actors</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
@@ -20,7 +21,8 @@
     <li method="post" action="${pageContext.request.contextPath}/users"><A
             href="${pageContext.request.contextPath}/users" title="Отзывы"> ПОЛЬЗОВАТЕЛИ </A></li>
     <li method="post" action="${pageContext.request.contextPath}/users"><A
-            href="${pageContext.request.contextPath}/logout" title="Выход"> ВЫХОД - <strong>${sessionScope.user}</strong></A></li>
+            href="${pageContext.request.contextPath}/logout" title="Выход"> ВЫХОД -
+        <strong>${sessionScope.user}</strong></A></li>
     <c:if test="${sessionScope.privilege eq '1'}">
         <li method="post" action="${pageContext.request.contextPath}/adminTool"><A
                 href="${pageContext.request.contextPath}/adminTool" title="Отзывы"> АДМИНИСТРАТОР </A></li>
@@ -116,24 +118,29 @@
         <br>
         <div class="alert alert-success">
             <h1 align="center">Визитные карточки актеров</h1>
-        </div>
-        <div class="jumbotron">
-            <div class="container">
-
-                <ol>
-                    <p>
-                        <c:forEach items="${requestScope.people}" var="people">
-                    <li>
-                        <a href="${pageContext.request.contextPath}/people-full-info?id=${people.id}">${people.name} ${people.family}</a>
-                    </li>
-                    </c:forEach>
-                    </p>
-                </ol>
-
+            <div class="panel panel-success">
+                <div class="container">
+                    <div id="" style="overflow-y:scroll; overflow-x:hidden; height:576px;">
+                        <ol>
+                            <p>
+                                <c:forEach items="${requestScope.people}" var="people">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/people-full-info?id=${people.id}">${people.name} ${people.family}</a>
+                            </li>
+                            </c:forEach>
+                            </p>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
+
+
+</div>
+
+</body>
+
 </body>
 </html>

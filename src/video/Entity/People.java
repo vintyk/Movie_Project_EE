@@ -14,6 +14,12 @@ public class People {
     private String dateOfBirthPeople;
     private Roles roles;
 
+    public People(long id, String namePeople, String familyPeople) {
+        this.id = id;
+        this.namePeople = namePeople;
+        this.familyPeople = familyPeople;
+    }
+
     public People(String namePeople, String familyPeople, String sNamePeople, String dateOfBirthPeople) {
         this.namePeople = namePeople;
         this.familyPeople = familyPeople;
