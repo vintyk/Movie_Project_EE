@@ -32,11 +32,13 @@ public class LoginServlet extends HttpServlet {
             return;
         } else {
             ViewUserByEmailDto user = UserServices.getInstance().getUserByEmail(userInputEmail);
+            long userId = user.getId();
             String nameUser = user.getName();
             String eMail = user.geteMail();
             String password = user.getPassword();
             int privilege = user.getPrivilege();
             if ((eMail != null) && (password.equals(userInputPassword))){
+                req.getSession().setAttribute("userId", userId);
                 req.getSession().setAttribute("userLoggedIn", true);
                 req.getSession().setAttribute("user", nameUser);
                 req.getSession().setAttribute("privilege", privilege);

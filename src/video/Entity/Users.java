@@ -16,7 +16,8 @@ public class Users {
     private Privileges privileges;
     private String privilegesStr;
 
-    public Users(String nameUser, String eMailUser, String passwordUser, int privilegeUser) {
+    public Users(long id, String nameUser, String eMailUser, String passwordUser, int privilegeUser) {
+        this.id = id;
         this.nameUser = nameUser;
         this.eMailUser = eMailUser;
         this.passwordUser = passwordUser;
@@ -81,19 +82,11 @@ public class Users {
         this.privilegeUser = privilegeUser;
     }
 
-    public int getPrivilegeUser() {
-        return privilegeUser;
-    }
-
-    public void setPrivilegeUser(int privilegeUser) {
-        this.privilegeUser = privilegeUser;
-    }
-
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -137,17 +130,27 @@ public class Users {
         this.passwordUser = passwordUser;
     }
 
-    @Override
-    public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", nameUser='" + nameUser + '\'' +
-                ", familyUser='" + familyUser + '\'' +
-                ", sNameUser='" + sNameUser + '\'' +
-                ", eMailUser='" + eMailUser + '\'' +
-                ", passwordUser='" + passwordUser + '\'' +
-                ", privilegeUser=" + privilegeUser +
-                ", privileges=" + privileges +
-                '}';
+    public int getPrivilegeUser() {
+        return privilegeUser;
+    }
+
+    public void setPrivilegeUser(int privilegeUser) {
+        this.privilegeUser = privilegeUser;
+    }
+
+    public Privileges getPrivileges() {
+        return privileges;
+    }
+
+    public void setPrivileges(Privileges privileges) {
+        this.privileges = privileges;
+    }
+
+    public String getPrivilegesStr() {
+        return privilegesStr;
+    }
+
+    public void setPrivilegesStr(String privilegesStr) {
+        this.privilegesStr = privilegesStr;
     }
 }

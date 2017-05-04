@@ -1,6 +1,5 @@
 package servlet;
-import javax.servlet.HttpConstraintElement;
-import javax.servlet.RequestDispatcher;
+import Services.MovieServices;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,14 +14,15 @@ import java.io.IOException;
 public class Reviews extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher
-                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/reviews.jsp");
-        requestDispatcher.forward(req, resp);
+        showPage(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher
-                = getServletContext().getRequestDispatcher("/WEB-INF/jsp/reviews.jsp");
-        requestDispatcher.forward(req, resp);
+        showPage(req, resp);
+    }
+
+    private void showPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("movies", MovieServices.getInstance().getAllMovies());
+        getServletContext().getRequestDispatcher("/WEB-INF/jsp/reviews.jsp").forward(req, resp);
     }
 }

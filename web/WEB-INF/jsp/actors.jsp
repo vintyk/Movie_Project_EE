@@ -41,38 +41,39 @@
         <div class="jumbotron">
             <h3>Добавить актера</h3>
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/actors">
+
                 <div class="control-group">
                     <label class="control-label" for="inputName">Введите имя актера</label>
                     <div class="controls">
-                        <input type="text" id="inputName" name="namePeople" placeholder="Имя">
+                        <input class="span3" type="text" id="inputName" name="namePeople" placeholder="Имя">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="inputFamily">Введите фамилию актера</label>
                     <div class="controls">
-                        <input type="text" id="inputFamily" name="familyPeople" placeholder="Фамилия">
+                        <input  class="span3" type="text" id="inputFamily" name="familyPeople" placeholder="Фамилия">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="inputSname">Отчество (если есть)</label>
                     <div class="controls">
-                        <input type="text" id="inputSname" name="sNamePeople" placeholder="Отчество">
+                        <input  class="span3" type="text" id="inputSname" name="sNamePeople" placeholder="Отчество">
                     </div>
                     <br>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="inputDate">Дата рождения</label>
                     <div class="controls">
-                        <input type="text" id="inputDate" name="dateOfBirthPeople" placeholder="1960.01.01">
+                        <input  class="span3" type="text" id="inputDate" name="dateOfBirthPeople" placeholder="1960.01.01">
                     </div>
                     <br>
                 </div>
                 <label class="radio">
-                    <input type="radio" name="rolesId" id="optionsRadios1" value="1" checked>
+                    <input  class="span3" type="radio" name="rolesId" id="optionsRadios1" value="1" checked>
                     Актер.
                 </label>
                 <label class="radio">
-                    <input type="radio" name="rolesId" id="optionsRadios2" value="2">
+                    <input  class="span3" type="radio" name="rolesId" id="optionsRadios2" value="2">
                     Режисер.
                 </label>
                 <br>
@@ -89,7 +90,7 @@
         <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/people-full-info2">
             <div class="jumbotron">
                 <div class="container">
-                    <select name="peopleListDropdown">
+                    <select  class="span3" name="peopleListDropdown">
                         <c:forEach items="${requestScope.people}" var="people">
                             <option value="${people.id}">${people.name} ${people.family}</option>
                         </c:forEach>

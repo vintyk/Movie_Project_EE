@@ -20,7 +20,8 @@
     <li method="post" action="${pageContext.request.contextPath}/users"><A
             href="${pageContext.request.contextPath}/users" title="Отзывы"> ПОЛЬЗОВАТЕЛИ </A></li>
     <li method="post" action="${pageContext.request.contextPath}/users"><A
-            href="${pageContext.request.contextPath}/logout" title="Выход"> ВЫХОД - <strong>${sessionScope.user}</strong></A></li>
+            href="${pageContext.request.contextPath}/logout" title="Выход"> ВЫХОД -
+        <strong>${sessionScope.user}</strong></A></li>
 
     <c:if test="${sessionScope.privilege eq '1'}">
         <li method="post" action="${pageContext.request.contextPath}/adminTool"><A
@@ -37,9 +38,59 @@
             <h1 align="center">Отзывы</h1>
         </div>
         <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/reviews">
-            <button type="submit" class="btn btn-primary btn-lg"> Все отзывы</button>
+            <select name="moviesId">
+                <c:forEach items="${requestScope.movies}" var="movies">
+                    <option value="${movies.id}">${movies.nameMovie}</option>
+                </c:forEach>
+            </select>
+            <br>
+            <br>
+            <button class="btn btn-large btn-block btn-primary" type="submit">Просмотреть отзывы о фильме</button>
+
         </form>
+
+        <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/reviews">
+            <button class="btn btn-large btn-block" type="submit">Оставить отзыв о фильме</button>
+            <br>
+            <textarea rows="5" name="text_Area" class="form-control" style="min-width: 100%" required="required"></textarea>
+            <br>
+            <select  name="rank">
+                <option value="1" >Оценить на 1</option>
+                <option value="2" >Оценить на 2</option>
+                <option value="3" >Оценить на 2</option>
+                <option value="4" >Оценить на 2</option>
+                <option value="5" >Оценить на 2</option>
+            </select>
+            <%--<select name="rank">--%>
+                <%--<c:forEach items="${requestScope.movies}" var="rank">--%>
+                    <%--<option value="${rank.id}">${rank.nameRank}</option>--%>
+                <%--</c:forEach>--%>
+            <%--</select>--%>
+        </form>
+
+    </div>
+
+    <div class="col-md-6 bs-col">
         <br>
+        <br>
+        <div class="alert alert-success">
+            <h1 align="center">Отзывы о фильме</h1>
+            <div class="panel panel-success">
+                <div class="container">
+                    <div id="" style="overflow-y:scroll; overflow-x:hidden; height:576px;">
+                        <ol>
+                            <p>
+                                <c:forEach items="${requestScope.people}" var="people">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/people-full-info?id=${people.id}">${people.name} ${people.family}</a>
+                            </li>
+                            </c:forEach>
+                            </p>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

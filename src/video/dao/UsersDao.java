@@ -73,15 +73,17 @@ public class UsersDao {
     public Optional<Users> find(String eMail) {
         try(Connection connection = ConnectionManager.getConnection()) {
             try(PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT name, e_mail, password, privilege_id FROM users WHERE e_mail = ?")) {
+                    "SELECT id, name, e_mail, password, privilege_id FROM users WHERE e_mail = ?")) {
                 preparedStatement.setString(1, eMail);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
+                    System.out.println(resultSet.getLong("id"));
                     System.out.println(resultSet.getString("name"));
                     System.out.println(resultSet.getString("e_mail"));
                     System.out.println(resultSet.getString("password"));
                     System.out.println(resultSet.getInt("privilege_id"));
                     return Optional.of(new Users(
+                            resultSet.getLong("id"),
                             resultSet.getString("name"),
                                     resultSet.getString("e_mail"),
                             resultSet.getString("password"),

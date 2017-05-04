@@ -48,7 +48,7 @@
                 <div class="control-group">
                     <label class="control-label" for="inputName">Введите название фильма</label>
                     <div class="controls">
-                        <input type="text" id="inputName" name="nameMovie" placeholder="Имя">
+                        <input type="text" id="inputName" name="nameMovie" placeholder="Имя" required="required">
                     </div>
                     <br>
                     <label class="control-label" for="genres">Выберете жанр фильма</label>
@@ -69,7 +69,7 @@
                 <div class="control-group">
                     <label class="control-label" for="inputDate">Дата выхода фильма</label>
                     <div class="controls">
-                        <input type="text" id="inputDate" name="dateOfMovie" placeholder="1960.01.01">
+                        <input type="text" id="inputDate" name="dateOfMovie" placeholder="1960.01.01" required="required">
                     </div>
                     <br>
                 </div>
@@ -82,8 +82,8 @@
             </form>
             <br>
             <h3>Добавить участника в фильм</h3>
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/moviesProject">
-                <select name="yearSelect">
+            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/moviesAddPeople">
+                <select  class="span3" name="moviesId">
                     <c:forEach items="${requestScope.movies}" var="movies">
                         <option value="${movies.id}">${movies.nameMovie}</option>
                     </c:forEach>
@@ -91,14 +91,14 @@
                 <br>
                 <br>
                 <div class="container">
-                    <select name="peopleListDropdown">
+                    <select  class="span3" name="peopleId">
                         <c:forEach items="${requestScope.people}" var="people">
                             <option value="${people.id}">${people.name} ${people.family}</option>
                         </c:forEach>
                     </select>
                     <br>
                     <br>
-                    <select name="roleId">
+                    <select  class="span3" name="roleId">
                         <option value="1" >Актер</option>
                         <option value="2" >Режисер</option>
                     </select>
@@ -122,7 +122,6 @@
                             <option value="${year.dateReleaseMovie}">${year.dateReleaseMovie}</option>
                         </c:forEach>
                     </select>
-
                     <br>
                     <br>
                     <button type="submit" class="btn btn-primary btn-lg"> Фильмы в этом году</button>

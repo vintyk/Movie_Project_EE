@@ -1,5 +1,6 @@
 package video.dao;
 
+
 import video.Entity.MoviePeopleRole;
 import video.connection.ConnectionManager;
 
@@ -26,14 +27,14 @@ public class MoviePeopleRoleDao {
         return INSTANCE;
     }
 
-    public void create(long movieId, long peopleId, long roleId) {
+    public void create(MoviePeopleRole moviePeopleRole) {
         try (Connection connection = ConnectionManager.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO movie_people_role (id_movie, id_people, id_role) " +
                             "VALUES (?, ?, ?)")) {
-                preparedStatement.setLong(1, movieId);
-                preparedStatement.setLong(2, peopleId);
-                preparedStatement.setLong(3, roleId);
+                preparedStatement.setLong(1, moviePeopleRole.getMoviesId());
+                preparedStatement.setLong(2, moviePeopleRole.getPeoplesId());
+                preparedStatement.setLong(3, moviePeopleRole.getRolesId());
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {

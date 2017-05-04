@@ -1,9 +1,6 @@
 package Services;
-import dto.ViewPeopleFullInfoDto;
 import dto.ViewUserByEmailDto;
-import video.Entity.People;
 import video.Entity.Users;
-import video.dao.PeopleDao;
 import video.dao.UsersDao;
 import java.util.Optional;
 /**
@@ -31,6 +28,7 @@ public class UserServices {
         }
         Users users = usersOptional.get();
         return new ViewUserByEmailDto(
+                users.getId(),
                 users.getNameUser(),
                 users.geteMailUser(),
                 users.getPasswordUser(),
