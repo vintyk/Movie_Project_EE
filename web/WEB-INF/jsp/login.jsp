@@ -28,14 +28,14 @@
         <div class="control-group">
             <label class="control-label" for="inputEmail"><fmt:message key="EnterUser"/></label>
             <div class="controls">
-                <input type="text" id="inputEmail" name="inputEmail" placeholder="E-mail">
+                <input required="required" type="text" id="inputEmail" name="inputEmail" placeholder="E-mail">
             </div>
         </div>
         <br>
         <div class="control-group">
             <label class="control-label" for="inputPassword"><fmt:message key="EnterPass"/></label>
             <div class="controls">
-                <input type="password" id="inputPassword" name="inputPassword" placeholder="Password">
+                <input required="required" type="password" id="inputPassword" name="inputPassword" placeholder="Password">
             </div>
         </div>
         <label class="checkbox">

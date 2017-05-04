@@ -45,13 +45,13 @@
                 <div class="control-group">
                     <label class="control-label" for="inputName">Введите имя актера</label>
                     <div class="controls">
-                        <input class="span3" type="text" id="inputName" name="namePeople" placeholder="Имя">
+                        <input required="required" class="span3" type="text" id="inputName" name="namePeople" placeholder="Имя">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="inputFamily">Введите фамилию актера</label>
                     <div class="controls">
-                        <input  class="span3" type="text" id="inputFamily" name="familyPeople" placeholder="Фамилия">
+                        <input required="required"  class="span3" type="text" id="inputFamily" name="familyPeople" placeholder="Фамилия">
                     </div>
                 </div>
                 <div class="control-group">
@@ -64,7 +64,7 @@
                 <div class="control-group">
                     <label class="control-label" for="inputDate">Дата рождения</label>
                     <div class="controls">
-                        <input  class="span3" type="text" id="inputDate" name="dateOfBirthPeople" placeholder="1960.01.01">
+                        <input  required="required" class="span3" type="text" id="inputDate" name="dateOfBirthPeople" placeholder="1960.01.01">
                     </div>
                     <br>
                 </div>

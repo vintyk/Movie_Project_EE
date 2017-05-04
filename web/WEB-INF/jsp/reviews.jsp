@@ -47,19 +47,16 @@
             <br>
             <button class="btn btn-large btn-block btn-primary" type="submit">Просмотреть отзывы о фильме</button>
 
-        </form>
-
-        <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/reviews">
-            <button class="btn btn-large btn-block" type="submit">Оставить отзыв о фильме</button>
+             <button class="btn btn-large btn-block" type="submit">Оставить отзыв о фильме</button>
             <br>
-            <textarea rows="5" name="text_Area" class="form-control" style="min-width: 100%" required="required"></textarea>
+            <textarea rows="5" name="comment_user" class="form-control" required="required"></textarea>
             <br>
             <select  name="rank">
                 <option value="1" >Оценить на 1</option>
                 <option value="2" >Оценить на 2</option>
-                <option value="3" >Оценить на 2</option>
-                <option value="4" >Оценить на 2</option>
-                <option value="5" >Оценить на 2</option>
+                <option value="3" >Оценить на 3</option>
+                <option value="4" >Оценить на 4</option>
+                <option value="5" >Оценить на 5</option>
             </select>
             <%--<select name="rank">--%>
                 <%--<c:forEach items="${requestScope.movies}" var="rank">--%>
