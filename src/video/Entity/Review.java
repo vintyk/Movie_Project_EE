@@ -19,6 +19,12 @@ public class Review {
         this.commentUser = commentUser;
     }
 
+    public Review(long rank, String commentUser, Users users) {
+        this.rank = rank;
+        this.commentUser = commentUser;
+        this.users = users;
+    }
+
     public long getId() {
         return id;
     }
@@ -57,5 +63,13 @@ public class Review {
 
     public void setCommentUser(String commentUser) {
         this.commentUser = commentUser;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 }

@@ -82,6 +82,11 @@ public class Users {
         this.privilegeUser = privilegeUser;
     }
 
+    public Users(String nameUser, String familyUser) {
+        this.nameUser = nameUser;
+        this.familyUser = familyUser;
+    }
+
     public long getId() {
         return id;
     }

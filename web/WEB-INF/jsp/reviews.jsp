@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Reviews</title>
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    
 </head>
 <body>
 <ul class="nav nav-pills navbar navbar-default navbar-fixed-top">
@@ -38,6 +40,10 @@
             <h1 align="center">Отзывы</h1>
         </div>
         <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/reviews">
+            <button class="btn btn-large btn-block btn-primary" type="submit" name="reviewsFullInfo" onclick="1"
+                    value="reviewsFullInfo" )>Просмотреть отзывы о фильме
+            </button>
+            <br>
             <select name="moviesId">
                 <c:forEach items="${requestScope.movies}" var="movies">
                     <option value="${movies.id}">${movies.nameMovie}</option>
@@ -45,41 +51,42 @@
             </select>
             <br>
             <br>
-            <button class="btn btn-large btn-block btn-primary" type="submit">Просмотреть отзывы о фильме</button>
-
-             <button class="btn btn-large btn-block" type="submit">Оставить отзыв о фильме</button>
+            <button class="btn btn-large btn-block" type="submit" name="createReview" onclick="2" value="createReview">
+                Оставить отзыв о фильме
+            </button>
             <br>
-            <textarea rows="5" name="comment_user" class="form-control" required="required"></textarea>
+            <textarea rows="5" name="comment_user" class="form-control"></textarea>
             <br>
-            <select  name="rank">
-                <option value="1" >Оценить на 1</option>
-                <option value="2" >Оценить на 2</option>
-                <option value="3" >Оценить на 3</option>
-                <option value="4" >Оценить на 4</option>
-                <option value="5" >Оценить на 5</option>
+            <select name="rank">
+                <option value="1">Оценить на 1</option>
+                <option value="2">Оценить на 2</option>
+                <option value="3">Оценить на 3</option>
+                <option value="4">Оценить на 4</option>
+                <option value="5">Оценить на 5</option>
             </select>
-            <%--<select name="rank">--%>
-                <%--<c:forEach items="${requestScope.movies}" var="rank">--%>
-                    <%--<option value="${rank.id}">${rank.nameRank}</option>--%>
-                <%--</c:forEach>--%>
-            <%--</select>--%>
         </form>
-
     </div>
-
     <div class="col-md-6 bs-col">
         <br>
         <br>
         <div class="alert alert-success">
             <h1 align="center">Отзывы о фильме</h1>
+            <form class="form-horizontal" method="get" action="${pageContext.request.contextPath}/getFile">
+                <button class="btn btn-success" type="submit" name="createReview" onclick="2" value="createReview">
+                    Сформировать Отчет об отзывах.
+                </button>
+            </form>
             <div class="panel panel-success">
                 <div class="container">
                     <div id="" style="overflow-y:scroll; overflow-x:hidden; height:576px;">
                         <ol>
                             <p>
-                                <c:forEach items="${requestScope.people}" var="people">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/people-full-info?id=${people.id}">${people.name} ${people.family}</a>
+
+                                <c:forEach items="${requestScope.review_full}" var="review_full">
+                                <li>
+                            <p> Отзыв пользователя: ${review_full.nameUser} ${review_full.familyUser} </p>
+                            <p> Его оценка фильму: ${review_full.rank}                                </p>
+                            <p> Комментарий к фильму: ${review_full.comment_user}                     </p>
                             </li>
                             </c:forEach>
                             </p>

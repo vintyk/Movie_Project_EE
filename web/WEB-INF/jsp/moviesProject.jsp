@@ -51,14 +51,14 @@
                         <input type="text" id="inputName" name="nameMovie" placeholder="Имя" required="required">
                     </div>
                     <br>
-                    <label class="control-label" for="genres">Выберете жанр фильма</label>
+                    <label class="control-label" for="genres">Выберете жанр фильма</label><br>
                     <select name="genres" id="genres">
                         <c:forEach items="${requestScope.genres}" var="genres">
                             <option value="${genres.id}">${genres.name} </option>
                         </c:forEach>
                     </select>
                     <br>
-                    <label class="control-label" for="countries">Выберете страну</label>
+                    <label class="control-label" for="countries">Выберете страну</label><br>
                     <select name="countries" id="countries">
                         <c:forEach items="${requestScope.countries}" var="countries">
                             <option value="${countries.id}">${countries.name} </option>

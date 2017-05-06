@@ -209,7 +209,7 @@ public class MoviesDao {
                 preparedStatement.setLong(1, id);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
-                        System.out.println(createMoviesPeopleFromResultSet(resultSet));
+                      //  System.out.println(createMoviesPeopleFromResultSet(resultSet));
                         movies.add(createMoviesPeopleFromResultSet(resultSet));
                     }
                 }

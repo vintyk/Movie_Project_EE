@@ -14,7 +14,7 @@
  <!-- Не работает вставка картинки -->
  <!-- <img  src="/img/login.png" border="0"  alt="login" > -->
 <br>
-<h3 class="col-md-4 bs-col">
+<div class="col-md-4 bs-col">
     <br>
     <br>
     <div class="alert alert-success">
@@ -59,5 +59,9 @@
 <!--    <c:if test="${sessionScope.privilege eq '1'}"> админ </c:if>
         <c:if test="${sessionScope.privilege eq '2'}"> юзер </c:if>    -->
 </div>
+ </div>
+ <div class="col-md-4 bs-col">
+     <img src="/resources/images/login.png">
+ </div>
 </body>
 </html>
