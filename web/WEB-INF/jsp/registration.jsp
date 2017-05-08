@@ -2,21 +2,27 @@
 
 <html>
 <head>
+    <style>
+    body {
+        background-image: url(/resources/images/maxresdefault.jpg);
+    }
+</style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>REGISTRATION</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
 <div class="col-md-4 bs-col">
     <br>
     <br>
-    <div class="alert alert-success">
+
     <h1 align="center">Регистрация пользователя</h1>
-    </div>
+
     <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/addUser">
         <div class="control-group">
             <label class="control-label" for="inputEmail">Введите логин (E-Mail)</label>
@@ -52,13 +58,6 @@
         <div class="control-group">
             <div class="controls">
                 <button type="submit" class="btn btn-primary btn-lg" > Зарегистрироваться </button>
-            </div>
-        </div>
-    </form>
-    <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/login">
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" class="btn btn-primary btn-lg" > Войти в систему </button>
             </div>
         </div>
     </form>

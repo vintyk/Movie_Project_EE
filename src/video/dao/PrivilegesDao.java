@@ -1,6 +1,5 @@
 package video.dao;
 import video.Entity.Privileges;
-import video.Entity.Roles;
 import video.connection.ConnectionManager;
 import java.sql.*;
 import java.util.Optional;

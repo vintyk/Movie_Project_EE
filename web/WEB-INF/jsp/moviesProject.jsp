@@ -3,11 +3,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
     <title>Movies</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url(/resources/images/wallls.com_95523.jpg);
+        }
+    </style>
 </head>
 <body>
 <ul class="nav nav-pills navbar navbar-default navbar-fixed-top">
@@ -34,9 +40,9 @@
     <div class="col-md-5 bs-col">
         <br>
         <br>
-        <div class="alert alert-success">
+
             <h1 align="center">Фильмы</h1>
-        </div>
+
 
         <div class="jumbotron">
 
@@ -147,7 +153,7 @@
     <div class="col-md-5 bs-col">
         <br>
         <br>
-        <div class="alert alert-success">
+
             <h1 align="center">Список фильмов</h1>
             <div class="panel panel-success">
                 <div class="container">
@@ -164,7 +170,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
 </div>
 </body>

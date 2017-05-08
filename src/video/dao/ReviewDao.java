@@ -16,6 +16,7 @@ import java.util.List;
 public class ReviewDao {
     private static final String REVIEW_TABLE_NAME = "reviews";
     private static final String USERS_TABLE_NAME = "users";
+
     private static final Object LOCK = new Object();
     private static ReviewDao INSTANCE = null;
 

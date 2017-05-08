@@ -1,9 +1,5 @@
 package servlet;
 
-import Services.CountryServices;
-import Services.GenresServices;
-import Services.MovieServices;
-import Services.PeopleServices;
 import video.Entity.MoviePeopleRole;
 import video.dao.MoviePeopleRoleDao;
 

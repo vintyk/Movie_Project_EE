@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
+    <style>
+        body {
+            background-image: url(/resources/images/picture-148066.jpg);
+        }
+    </style>
     <title>Admin Tool</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
@@ -9,7 +14,9 @@
 </head>
 <body>
 <div class="container-fluid bs-cont">
-<div class="col-md-6 bs-col"> <br>
+<div class="col-md-3 bs-col"> <br>
+</div>
+    <div class="col-md-6 bs-col"> <br>
     <h1>Регистрация пользователя. Администратор.</h1>
     <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/save">
         <div class="control-group">

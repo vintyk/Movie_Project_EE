@@ -1,7 +1,5 @@
 package dto;
 
-import video.Entity.Roles;
-
 /**
  * Created by Vinty on 24.04.2017.
  */

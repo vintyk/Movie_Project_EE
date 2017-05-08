@@ -1,7 +1,4 @@
 package video.Entity;
-import javax.management.relation.Role;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Vinty on 02.04.2017.

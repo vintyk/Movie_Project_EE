@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url(/resources/images/actors.jpg);
+        }
+    </style>
 </head>
 <body>
 <ul class="nav nav-pills navbar navbar-default navbar-fixed-top">
@@ -35,9 +40,9 @@
 <div class="container-fluid bs-cont">
     <div class="col-md-5 bs-col"><br>
         <br>
-        <div class="alert alert-success">
+
             <h1 align="center">Aктеры</h1>
-        </div>
+
         <div class="jumbotron">
             <h3>Добавить актера</h3>
             <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/actors">
@@ -117,7 +122,7 @@
     <div class="col-md-5 bs-col">
         <br>
         <br>
-        <div class="alert alert-success">
+
             <h1 align="center">Визитные карточки актеров</h1>
             <div class="panel panel-success">
                 <div class="container">
@@ -134,7 +139,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
 </div>
 

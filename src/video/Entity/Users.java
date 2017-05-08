@@ -1,7 +1,5 @@
 package video.Entity;
 
-import javax.management.relation.Role;
-
 /**
  * Created by Vinty on 07.04.2017.
  */

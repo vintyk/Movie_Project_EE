@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
+    <style>
+        body {
+            background-image: url(/resources/images/maxresdefault.jpg);
+        }
+    </style>
 </head>
 <body>
 <ul class="nav nav-pills navbar navbar-default navbar-fixed-top">
@@ -36,9 +40,9 @@
     <div class="col-md-4 bs-col">
         <br>
         <br>
-        <div class="alert alert-success">
+
             <h1 align="center">Отзывы</h1>
-        </div>
+
         <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/reviews">
             <button class="btn btn-large btn-block btn-primary" type="submit" name="reviewsFullInfo" onclick="1"
                     value="reviewsFullInfo" )>Просмотреть отзывы о фильме
@@ -69,7 +73,7 @@
     <div class="col-md-6 bs-col">
         <br>
         <br>
-        <div class="alert alert-success">
+
             <h1 align="center">Отзывы о фильме</h1>
             <form class="form-horizontal" method="get" action="${pageContext.request.contextPath}/getFile">
                 <button class="btn btn-success" type="submit" name="createReview" onclick="2" value="createReview">
@@ -94,7 +98,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
 </div>
 </body>

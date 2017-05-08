@@ -1,5 +1,4 @@
 package servlet;
-import Services.UserServices;
 import video.Entity.Users;
 import video.dao.UsersDao;
 
@@ -9,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 /**
